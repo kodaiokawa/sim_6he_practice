@@ -442,8 +442,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/bin/python3.8][/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/include/python3.8][/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/lib/libpython3.8.dylib][cfound components: Interpreter Development Development.Module Development.Embed ][v3.8.2()]
 //ADVANCED property for variable: ROOT_Core_LIBRARY
 ROOT_Core_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ROOT_Gpad_LIBRARY
@@ -502,17 +500,4 @@ ROOT_rootmkdir_CMD-ADVANCED:INTERNAL=1
 ROOT_rootmv_CMD-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ROOT_rootrm_CMD
 ROOT_rootrm_CMD-ADVANCED:INTERNAL=1
-_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=136b639d7e094a7bae1959ed9e781c8b
-_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=ce06c01c684b5ab8e4e07f78afb98279
-//Path to a program.
-_Python3_EXECUTABLE:INTERNAL=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/bin/python3.8
-//Path to a file.
-_Python3_INCLUDE_DIR:INTERNAL=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/include/python3.8
-//Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;8;2;64;;cpython-38-darwin;/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8;/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8;/Library/Python/3.8/site-packages;/Library/Python/3.8/site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=fc2e1b4d3a90f5edb3e36f97b9b1cfe8
-//Path to a library.
-_Python3_LIBRARY_RELEASE:INTERNAL=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/lib/libpython3.8.dylib
-//Path to a file.
-_Python3_NumPy_INCLUDE_DIR:INTERNAL=_Python3_NumPy_INCLUDE_DIR-NOTFOUND
 

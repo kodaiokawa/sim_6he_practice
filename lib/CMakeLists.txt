@@ -9,9 +9,13 @@ project(lise_lib
     LANGUAGES CXX)
 
 add_library(refer STATIC 
-    ./source/function.cpp)
+    ./source/function.cpp
+    ./source/beam.cpp)
 
-target_link_libraries(refer PUBLIC ROOT::Hist ROOT::Physics)
+target_link_libraries(refer ROOT::Core ROOT::Gpad ROOT::Graf3d ROOT::Graf
+  ROOT::Hist ROOT::Imt ROOT::MathCore ROOT::Matrix ROOT::MultiProc ROOT::Net
+  ROOT::Physics ROOT::Postscript ROOT::RIO ROOT::ROOTDataFrame
+  ROOT::ROOTVecOps ROOT::Rint ROOT::Thread ROOT::TreePlayer ROOT::Tree)
 target_compile_features(refer PUBLIC cxx_std_11)
 target_include_directories(refer INTERFACE ./include)
 set_target_properties(refer

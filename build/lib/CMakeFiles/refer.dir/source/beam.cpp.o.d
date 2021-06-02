@@ -1,6 +1,6 @@
-CMakeFiles/a.out.dir/main.cpp.o: \
-  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/main.cpp \
-  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/./include/function.h \
+lib/CMakeFiles/refer.dir/source/beam.cpp.o: \
+  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/source/beam.cpp \
+  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/source/../include/beam.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
@@ -141,92 +141,7 @@ CMakeFiles/a.out.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
-  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/./include/beam.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCanvas.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TPad.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualPad.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TObject.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/RConfigure.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/Rtypes.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/RtypesCore.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/RConfig.hxx \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/../RVersion.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityMacros.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/TargetConditionals.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/DllImport.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/stddef.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/snprintf.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/strlcpy.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TGenericClassInfo.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/vector \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__bit_reference \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/climits \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/limits.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/limits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/limits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/machine/limits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/arm/limits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/arm/_limits.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__split_buffer \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TSchemaHelper.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TIsAProxy.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualIsAProxy.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TStorage.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVersionCheck.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/RVersion.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttLine.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttFill.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttPad.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TQObject.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TList.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TSeqCollection.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCollection.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TIterator.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TString.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TMathBase.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/RStringView.hxx \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/TypeTraits.hxx \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualRWMutex.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualMutex.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualQConnection.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TInterpreter.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDataType.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDictionary.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TNamed.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ESTLType.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TInterpreterValue.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/map \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__tree \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__node_handle \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/optional \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/GuiTypes.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/Buttons.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttBBox2D.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TPoint.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttCanvas.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCanvasImp.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TApplication.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TApplicationImp.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TH1.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAxis.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttAxis.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayD.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArray.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttMarker.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayC.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayS.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayI.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayF.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/Foption.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/Fit/FitExecutionPolicy.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVectorFfwd.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVectorDfwd.h \
-  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TFitResultPtr.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/float.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/float.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/float.h \
+  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/source/../include/function.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ios \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__locale \
@@ -235,6 +150,14 @@ CMakeFiles/a.out.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/chrono \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ctime \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ratio \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/climits \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/limits.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/limits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/limits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/machine/limits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/arm/limits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/arm/_limits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/system_error \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__errc \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cerrno \
@@ -269,6 +192,7 @@ CMakeFiles/a.out.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/xlocale/_string.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/xlocale/_time.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/xlocale/_wchar.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/xlocale/_wctype.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/streambuf \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream \
@@ -302,4 +226,15 @@ CMakeFiles/a.out.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/bitset
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/bitset \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__bit_reference \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/fstream \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/filesystem \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/stack \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/deque \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__split_buffer \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/random \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/numeric \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/vector

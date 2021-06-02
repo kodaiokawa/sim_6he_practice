@@ -130,6 +130,30 @@ refer/fast:
 	cd /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/build
 .PHONY : refer/fast
 
+source/beam.o: source/beam.cpp.o
+.PHONY : source/beam.o
+
+# target to build an object file
+source/beam.cpp.o:
+	cd /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/beam.cpp.o
+.PHONY : source/beam.cpp.o
+
+source/beam.i: source/beam.cpp.i
+.PHONY : source/beam.i
+
+# target to preprocess a source file
+source/beam.cpp.i:
+	cd /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/beam.cpp.i
+.PHONY : source/beam.cpp.i
+
+source/beam.s: source/beam.cpp.s
+.PHONY : source/beam.s
+
+# target to generate assembly for a file
+source/beam.cpp.s:
+	cd /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/beam.cpp.s
+.PHONY : source/beam.cpp.s
+
 source/function.o: source/function.cpp.o
 .PHONY : source/function.o
 
@@ -163,6 +187,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... refer"
+	@echo "... source/beam.o"
+	@echo "... source/beam.i"
+	@echo "... source/beam.s"
 	@echo "... source/function.o"
 	@echo "... source/function.i"
 	@echo "... source/function.s"
