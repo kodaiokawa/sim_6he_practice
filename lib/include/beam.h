@@ -13,6 +13,7 @@ class Beam
         void set_condition(string filepath);
         void print_cond();
         void generate_beam(double particle[5]);
+        void judge_interact(double hantei[6], double particle[5]);
 };
 
 

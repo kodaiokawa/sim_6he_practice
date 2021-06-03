@@ -17,17 +17,15 @@ int main( int argc, char **argv )
     beam_test->set_condition(filename);
     beam_test->print_cond();
 
-    //particle[0]: particle type
+    //particle[0]: particle type >6he <3H
     //particle[1]: particle energy
-    //particle[2]: location_x
+    //particle[2]: location_x (cm)
     //particle[3]: location_y
     //particle[4]: location_z
     double particle[5];
     beam_test->generate_beam(particle);
-    for(int i=0; i<5; i++){
-        cout << particle[i] << endl;
-    }
-    cout << endl;
+    double hantei[6];
+    beam_test->judge_interact(hantei, particle);
 
 
 

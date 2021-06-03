@@ -58,7 +58,16 @@ void Beam::generate_beam(double particle[5])
     if(generate_standard()<purity){ particle[0]=1.0; }
     else{ particle[0]=-1.0; }
     particle[1] = particle_energy;
-    particle[2] = generate_standard();
-    particle[3] = generate_standard();
+    particle[2] = generate_normal(0.0, 1.0); //cm
+    particle[3] = generate_normal(0.0, 1.0);
     particle[4] = 0.0;
 } 
+
+void Beam::judge_interact(double hantei[6], double particle[5])
+{
+    if(particle[0] > 0){ //in case of 6he beam
+        cout << "test 0" << endl;
+    }else{ //in case of 3h beam
+        cout << "test -1" << endl;
+    }
+}
