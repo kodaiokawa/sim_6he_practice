@@ -27,7 +27,7 @@ void Beam::set_condition(string filepath)
     time = input_data[0];
     intensity = input_data[1];
     purity = input_data[2];
-    thickness = input_data[3];
+    thickness = input_data[3] * 1.0e-4;
     density = input_data[4];
     strip_x = input_data[5];
     strip_y = input_data[6];
@@ -43,7 +43,7 @@ void Beam::print_cond()
     cout << "experiment time  : " << time << " s" << endl;
     cout << "beam intensity : " << intensity << " pps" << endl;
     cout << "6He purity : " << purity * 100.0 << " %" << endl;
-    cout << "target(C2H4) thickness : " << thickness << " mg/cm2" << endl;
+    cout << "target(C2H4) thickness : " << thickness << " um" << endl;
     cout << "target density : " << density << " atoms/cm2" << endl;
     cout << "size of detector : " << strip_x << " x " << strip_y << " cm2" << endl;
     cout << "detector angle : " << strip_ang << " deg" << endl;
@@ -55,19 +55,19 @@ void Beam::print_cond()
 
 void Beam::generate_beam(double particle[5])
 {
-    if(generate_standard()<purity){ particle[0]=1.0; }
+    if(generate_standard()<purity){ particle[0]=1.0; } //particle[0]>0 : 6he
     else{ particle[0]=-1.0; }
     particle[1] = particle_energy;
     particle[2] = generate_normal(0.0, 1.0); //cm
     particle[3] = generate_normal(0.0, 1.0);
-    particle[4] = 0.0;
+    particle[4] = -thickness/2.0;
 } 
 
 void Beam::judge_interact(double hantei[6], double particle[5])
 {
     if(particle[0] > 0){ //in case of 6he beam
-        cout << "test 0" << endl;
+        cout << all_cross_section(8.0, 1) << endl;
     }else{ //in case of 3h beam
-        cout << "test -1" << endl;
+        //cout << all_cross_section(8.0, 3) << endl;
     }
 }

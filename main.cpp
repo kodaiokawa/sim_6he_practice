@@ -24,6 +24,15 @@ int main( int argc, char **argv )
     //particle[4]: location_z
     double particle[5];
     beam_test->generate_beam(particle);
+    cout << particle[2] << endl;
+    cout << particle[4] << endl;
+
+    //hantei[0]: which reaction occur 
+    //              0: no reaction 1: 2: 3: 4: 5:
+    //hantei[1]: incident particle energy
+    //particle[2]: location_x (cm)
+    //particle[3]: location_y
+    //particle[4]: location_z
     double hantei[6];
     beam_test->judge_interact(hantei, particle);
 
@@ -37,14 +46,6 @@ int main( int argc, char **argv )
 
 
 
-
-
-
-    test();
-
-    for(int i=0; i<10; i++){
-        cout << generate_standard() << endl;
-    }
 
     
 
