@@ -22,20 +22,19 @@ int main( int argc, char **argv )
     //particle[2]: location_x (cm)
     //particle[3]: location_y
     //particle[4]: location_z
+    cout << beam_test->get_ini_num() << endl;
     double particle[5];
-    beam_test->generate_beam(particle);
-    cout << particle[2] << endl;
-    cout << particle[4] << endl;
+    for(int loop=0; loop<beam_test->get_ini_num(); loop++){
+        if((loop+1)%((int)(beam_test->get_ini_num()/1000))==0){
+            cout << "\r" << "proceeding... " << 100.0 * (double)loop/(double)beam_test->get_ini_num() << " %" << string(20, ' ');
+        }
+        beam_test->generate_beam(particle);
+        beam_test->reation_loc_target(particle);
+        int reaction_frag = beam_test->judge_interact(particle);
+        if(reaction_frag == 0){ continue; }
+        //cout << reaction_frag << endl;
 
-    //hantei[0]: which reaction occur 
-    //              0: no reaction 1: 2: 3: 4: 5:
-    //hantei[1]: incident particle energy
-    //particle[2]: location_x (cm)
-    //particle[3]: location_y
-    //particle[4]: location_z
-    double hantei[6];
-    beam_test->judge_interact(hantei, particle);
-
+    }
 
 
 
@@ -60,7 +59,7 @@ int main( int argc, char **argv )
     app2.Run(); */
 
 
-
-
+    cout << endl;
+    cout << "...simulation completed!" << endl;
     return 0;
 }
