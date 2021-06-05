@@ -117,7 +117,7 @@ int main( int argc, char **argv )
 
     }
 
-    TString ofn = "simulation.root";
+    TString ofn = "../simulation.root";
     TFile *fout = new TFile(ofn, "recreate");
     tree->Write();
     h_strip->Write();
