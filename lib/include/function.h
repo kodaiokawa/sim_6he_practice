@@ -25,8 +25,6 @@ double generate_normal(double mu, double sigma);
 
 double cm_energy(double energy, int reaction);
 double all_cross_section(double energy, int reaction); //cm2
+double generate_cm_angle();
 
 
-double depth_scatter(int particle, int target); //target 1=p, 2=12C
-double energyloss_target(int particle, int target);
-double struggling_target(int particle, int target, double depth);

@@ -2,9 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 project(lise_lib
     VERSION 1.0.0
     DESCRIPTION "okawa practice"
-    # URL関係のライブラリをインストールしないと動かないことがあるので
-    # コメントアウトしておきます(2019/12/02 修正)
-    # (参照 "https://kamino.hatenablog.com/entry/cmake_tutorial2")
+    # (reference "https://kamino.hatenablog.com/entry/cmake_tutorial2")
     # HOMEPAGE_URL "https://example.com"
     LANGUAGES CXX)
 

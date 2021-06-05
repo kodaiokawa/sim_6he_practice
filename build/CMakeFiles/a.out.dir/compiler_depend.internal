@@ -145,9 +145,9 @@ CMakeFiles/a.out.dir/main.cpp.o
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/wctype.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h
  /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib/include/beam.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCanvas.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TPad.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualPad.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TH1.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAxis.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TNamed.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TObject.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/RConfigure.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/Rtypes.h
@@ -178,45 +178,16 @@ CMakeFiles/a.out.dir/main.cpp.o
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TStorage.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVersionCheck.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/RVersion.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttLine.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttFill.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttPad.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TQObject.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TList.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TSeqCollection.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCollection.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TIterator.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TString.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TMathBase.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/cmath
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/RStringView.hxx
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/TypeTraits.hxx
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualRWMutex.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualMutex.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualQConnection.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TInterpreter.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDataType.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDictionary.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TNamed.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/ESTLType.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TInterpreterValue.h
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/map
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__tree
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__node_handle
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/optional
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/GuiTypes.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/Buttons.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttBBox2D.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TPoint.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttCanvas.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCanvasImp.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TApplication.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TApplicationImp.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TH1.h
- /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAxis.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttAxis.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayD.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArray.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttLine.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttFill.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TAttMarker.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayC.h
  /opt/homebrew/Cellar/root/6.22.08_2/include/root/TArrayS.h
@@ -230,10 +201,45 @@ CMakeFiles/a.out.dir/main.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/float.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/float.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/float.h
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/iostream
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/ios
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__locale
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/mutex
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TTree.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/Compression.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/TIOFeatures.hxx
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TClass.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDictionary.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/ESTLType.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TObjArray.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TSeqCollection.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TCollection.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TIterator.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualRWMutex.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualMutex.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/map
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__tree
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__node_handle
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/optional
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/unordered_set
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__hash_table
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDataType.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDirectory.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TUUID.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TList.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TBuffer.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/Bytes.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TVirtualTreePlayer.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TBranch.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TBranchCacheInfo.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TBits.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/array
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TFile.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDirectoryFile.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TDatime.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TUrl.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/TMap.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/THashTable.h
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/RConcurrentHashColl.hxx
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/TRWSpinLock.hxx
+ /opt/homebrew/Cellar/root/6.22.08_2/include/root/ROOT/TSpinMutex.hxx
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/condition_variable
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__mutex_base
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/chrono
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/ctime
@@ -260,6 +266,10 @@ CMakeFiles/a.out.dir/main.cpp.o
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/qos.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_mach_port_t.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sched.h
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/mutex
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/iostream
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/ios
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__locale
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/locale.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/locale.h
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_locale.h

@@ -105,3 +105,29 @@ double all_cross_section(double energy, int reaction) //cm2
 }
 
 
+double generate_cm_angle()
+{
+    double norm = 0.0;
+
+    double del_angle = 0.1;
+    double del_rad_angle = del_angle * M_PI / 180.0;
+    for(double angle=1.0; angle<180.0; angle+=del_angle){
+        double rad_angle = angle * M_PI / 180.0;
+        norm += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
+    }
+
+    double uni = generate_standard();
+    double tmp = 0.0;
+    double cm_angle;
+    for(double angle=1.0; angle<180.0; angle+=del_angle){
+        double rad_angle = angle * M_PI / 180.0;
+        tmp += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle / norm;
+        if(tmp > uni){
+            cm_angle = angle;
+            break;
+        }
+    }
+    return cm_angle;
+}
+
+

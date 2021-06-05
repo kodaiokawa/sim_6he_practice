@@ -4,6 +4,7 @@
 #include <fstream>
 #include <random>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -33,6 +34,8 @@ void Beam::set_condition(string filepath)
     strip_y = input_data[6];
     strip_ang = input_data[7];
     particle_energy = input_data[8];
+    R = input_data[9];
+    detector_sigma = input_data[10];
 }
 
 
@@ -48,6 +51,8 @@ void Beam::print_cond()
     cout << "size of detector : " << strip_x << " x " << strip_y << " cm2" << endl;
     cout << "detector angle : " << strip_ang << " deg" << endl;
     cout << "particle energy : " << particle_energy << " MeV/u" << endl;
+    cout << "distance between detector and target : " << R << " cm" << endl;
+    cout << "Si detector sigma : " << detector_sigma << " MeV" << endl;
     cout << "*****************************" << endl;
     cout << endl;
 }
@@ -106,8 +111,149 @@ int Beam::judge_interact(double particle[5])
     }
 }
 
-double Beam::generate_cm_angle(double energy, int reaction)
+//http://lambda.phys.tohoku.ac.jp/~miwa9/monte_carlo/kinematics.pdf
+double Beam::scatter(int reaction, double particle[5], double particle1[7], double particle2[7])
 {
-    double uni = generate_standard();
-    return 0.0;
+    const double to_deg = 180.0 / M_PI;
+    const double to_rad = M_PI / 180.0;
+
+    double M1, M2, M3, M4;
+
+    if(reaction == 1){
+        M1 = M3 = MASS::MASS_6HE;
+        M2 = M4 = MASS::MASS_p;
+    }else if(reaction == 2){
+        M1 = M3 = MASS::MASS_6HE;
+        M2 = M4 = MASS::MASS_12C;
+    }else if(reaction == 3){
+        M1 = M3 = MASS::MASS_3H;
+        M2 = M4 = MASS::MASS_p;
+    }else if(reaction == 4){
+        M1 = M3 = MASS::MASS_3H;
+        M2 = M4 = MASS::MASS_12C;
+    }else{
+        cout << "ERROR" << endl;
+        exit(1);
+    }
+
+    double Theta = generate_cm_angle(); // degree
+    double E1; // MeV 実験室系のエネルギー
+    if(reaction == 1 || reaction == 2){ E1 = particle[1]*6.0 + M1; }
+    else if(reaction == 3 || reaction == 4){ E1 = particle[1]*3.0 + M1; }
+    double E2 = 0.0 + M2; // MeV 実験室系のエネルギー
+    double p1 = sqrt((E1)*(E1)-(M1)*(M1));
+    double p2 = sqrt((E2)*(E2)-(M2)*(M2));
+
+    double beta = (p1 + p2)/(E1 + E2);
+    double gamma = 1.0/sqrt(1.0 - beta * beta);
+    
+    double E1_CM = gamma * E1 - beta * gamma * p1;
+    double E2_CM = gamma * E2 - beta * gamma * p2;
+    double p1_CM = -1.0 * beta * gamma * E1 + gamma * p1;
+    double p2_CM = -1.0 * beta * gamma * E2 + gamma * p2;
+
+    double E_CM = E1_CM + E2_CM;
+
+    double E3_CM = (E_CM + (M3*M3 - M4*M4)/E_CM) / 2.0;
+    double E4_CM = (E_CM - (M3*M3 - M4*M4)/E_CM) / 2.0;
+    double p_CM = sqrt(E3_CM*E3_CM - M3*M3);
+
+    if(E3_CM < M3 || E4_CM < M4){
+        cout << "ERROR : in calculation of scattering" << endl;
+        exit(1);
+    }
+
+    double E3 = gamma * E3_CM + beta * gamma * p_CM * cos(Theta * to_rad);
+    double E4 = gamma * E4_CM - beta * gamma * p_CM * cos(Theta * to_rad);
+    double p3 = sqrt((gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
+    double p4 = sqrt((gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
+
+    double theta = to_deg * asin((p_CM*sin(Theta * to_rad))/p3);
+    double phi = to_deg * asin((p_CM*sin(Theta * to_rad))/p4);
+
+    if(reaction == 1){
+        particle1[0] = 11.0;
+        particle2[0] = 13.0;
+    }else if(reaction == 2){
+        particle1[0] = 11.0;
+        particle2[0] = 14.0;
+    }else if(reaction == 3){
+        particle1[0] = 12.0;
+        particle2[0] = 13.0;
+    }else if(reaction == 4){
+        particle1[0] = 12.0;
+        particle2[0] = 14.0;
+    }
+    particle1[1] = E3 - M3;
+    particle2[1] = E4 - M4; //MeV (x MeV/u)
+    particle1[2] = particle[2];
+    particle2[2] = particle[2];
+    particle1[3] = particle[3];
+    particle2[3] = particle[3];
+    particle1[4] = particle[4];
+    particle2[4] = particle[4];
+    particle1[5] = theta;
+    particle2[5] = phi;
+    particle1[6] = 360.0*generate_standard();
+    particle2[6] = particle1[6] - 180.0;  
+
+    return Theta;
+}
+
+//(*** from lise++ value ***)
+int Beam::leave_target(double particle[7]){
+    int frag = 1;
+    double del_z = thickness/2.0 - particle[4];
+    double distance = del_z / cos(particle[5] * M_PI / 180.0);
+    particle[2] += distance * sin(particle[5] * M_PI / 180.0) * cos(particle[6] * M_PI / 180.0);
+    particle[3] += distance * sin(particle[5] * M_PI / 180.0) * sin(particle[6] * M_PI / 180.0);
+    particle[4] += del_z; 
+
+    double energy_loss, energy_straggling;
+    if((int)particle[0] == 11){
+        energy_loss = 1.2 * distance*1.0e+4 / 50.0;
+        energy_straggling = generate_normal(0.0, 0.0059 * (distance * 1.0e+4) / 50.0) * 6.0;
+    }else if((int)particle[0] == 12){
+        energy_loss = 0.3 * distance*1.0e+4 / 50.0;
+        energy_straggling = generate_normal(0.0, 0.00586 * (distance * 1.0e+4) / 50.0) * 3.0;
+    }else if((int)particle[0] == 13){
+        energy_loss = 0.3 * distance*1.0e+4 / 50.0;
+        energy_straggling = generate_normal(0.0, 0.002 * (distance * 1.0e+4) / 50.0) * 1.0;
+    }else if((int)particle[0] == 14){
+        energy_loss = 12.0 * distance*1.0e+4 / 50.0;
+        energy_straggling = generate_normal(0.0, 0.002 * (distance * 1.0e+4) / 50.0) * 12.0;
+    }else{
+        cout << "ERROR : the value of particle[0] " << particle[0] << endl;
+        exit(1);
+    }
+    particle[1] -= energy_loss + energy_straggling;
+
+    if(particle[1] < 0){ frag = 0; }
+    return frag;
+}
+
+int Beam::judge_detector(double particle[7])
+{
+    int frag=0;
+    double u = sin(particle[5] * M_PI / 180.0) * cos(particle[6] * M_PI / 180.0);
+    double v = sin(particle[5] * M_PI / 180.0) * sin(particle[6] * M_PI / 180.0);
+    double w = cos(particle[5] * M_PI / 180.0);
+
+    double conv_x = particle[4]*sin(-strip_ang * M_PI / 180.0) + particle[2]*cos(-strip_ang * M_PI / 180.0);
+    double conv_y = particle[3];
+    double conv_z = particle[4]*cos(-strip_ang * M_PI / 180.0) - particle[2]*sin(-strip_ang * M_PI / 180.0);
+    double conv_u = w*sin(-strip_ang * M_PI / 180.0) + u*cos(-strip_ang * M_PI / 180.0);
+    double conv_v = v;
+    double conv_w = w*cos(-strip_ang * M_PI / 180.0) - u*sin(-strip_ang * M_PI / 180.0);
+    
+    double factor = (R - conv_z) / conv_w;
+    conv_x += factor*conv_u;
+    conv_y += factor*conv_v;
+    if(abs(conv_x) < strip_x && abs(conv_y) < strip_y){ frag = 1; }
+    return frag;
+}
+
+double Beam::energy_detector(double energy)
+{
+    return generate_normal(energy, detector_sigma);
 }
