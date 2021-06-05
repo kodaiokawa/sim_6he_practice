@@ -1,9 +1,8 @@
-# sim_6he_practice
-simulation practice of 6he experiment as my first project
+# 6he実験のモンテカルロシミュレーション
+モンテカルロ方を用いて、どの位置に検出器を置けば、正しく実験できるのかを評価する。
+シミュレーション結果はrootfileに出力されるようにした。
 
-自分の練習用
 * makefileの使い方
 * c++のクラスの使い方
 * モンテカルロシミュレーション
-
-の勉強
+* ルートファイルの作成と解析
