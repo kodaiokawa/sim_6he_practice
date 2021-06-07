@@ -1,5 +1,5 @@
 ***** write experimental condition *****
-0.1
+100.0
 1.5e+6
 0.7
 50.0

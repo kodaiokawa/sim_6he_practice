@@ -76,17 +76,17 @@ void Beam::generate_beam(double particle[5])
 //もし、反応したと仮定した時のtarget内での位置を指定し、エネルギー損失を考えた値を格納する(*** from lise++ value ***)
 void Beam::reation_loc_target(double particle[5])
 {
-    double stop_length = generate_standard() * thickness; //um
+    double stop_length = generate_standard() * thickness; //cm
     particle[4] += stop_length;
     double energy_loss;
     double energy_straggling;
     if(particle[0] > 0.0){ //in case of 6he beam
-        energy_loss = 0.02278 * (stop_length * 1.0e+4);
-        energy_straggling = generate_normal(0.0, 0.0059 * (stop_length * 1.0e+4) / 50.0);
+        energy_loss = 0.02278 * (stop_length *1.0e+4);
+        energy_straggling = generate_normal(0.0, 0.0059 * (stop_length*1.0e+4) / 50.0);
         particle[1] -= energy_loss/6.0 + energy_straggling;
     }else{ //in case of 3h beam
-        energy_loss = 0.00566 * (stop_length * 1.0e+4);
-        energy_straggling = generate_normal(0.0, 0.00585 * (stop_length * 1.0e+4) / 50.0);
+        energy_loss = 0.00566 * (stop_length*1.0e+4);
+        energy_straggling = generate_normal(0.0, 0.00585 * (stop_length*1.0e+4) / 50.0);
         particle[1] -= energy_loss/3.0 + energy_straggling;
     }
 

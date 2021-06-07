@@ -28,8 +28,8 @@ int main( int argc, char **argv )
     tree->Branch("ini_energy", &ini_energy, "ini_energy/D");
     tree->Branch("frag_reac", &frag_reac, "frag_reac/I");
     tree->Branch("scat_x", &scat_x, "scat_x/D");
-    tree->Branch("scat_y", &scat_x, "scat_y/D");
-    tree->Branch("scat_z", &scat_x, "scat_z/D");
+    tree->Branch("scat_y", &scat_y, "scat_y/D");
+    tree->Branch("scat_z", &scat_z, "scat_z/D");
     tree->Branch("scat_energy", &scat_energy, "scat_energy/D");
     tree->Branch("cm_ang", &cm_ang, "cm_ang/D");
     tree->Branch("part1_theta", &part1_theta, "part1_theta/D");
@@ -81,7 +81,7 @@ int main( int argc, char **argv )
         int reaction_frag = beam_test->judge_interact(particle);
         frag_reac = reaction_frag;
         if(reaction_frag == 0){
-            tree->Fill();
+            //tree->Fill();
             continue;
         }
         scat_x = particle[2];
@@ -117,7 +117,7 @@ int main( int argc, char **argv )
 
     }
 
-    TString ofn = "../simulation.root";
+    TString ofn = "../rootfile/simulation.root";
     TFile *fout = new TFile(ofn, "recreate");
     tree->Write();
     h_strip->Write();
@@ -125,7 +125,7 @@ int main( int argc, char **argv )
 
     cout << endl;
     cout << endl;
-    cout << "<Created> ./simulation.root" << endl;
+    cout << "<Created> ../rootfile/simulation.root" << endl;
     cout << "...simulation completed!" << endl;
     return 0;
 }
