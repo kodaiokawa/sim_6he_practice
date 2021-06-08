@@ -15,10 +15,11 @@ int main( int argc, char **argv )
     //prepare for rootfile
     int ini_particle;
     double ini_x, ini_y, ini_z, ini_energy;
-    int frag_reac;
+    int flag_reac;
     double scat_x, scat_y, scat_z, scat_energy;
     double cm_ang, part1_theta, part1_phi, part2_theta, part2_phi;
     double part1_energy, part1_det_energy, part2_energy, part2_det_energy;
+    double r_min;
 
     TTree *tree = new TTree("tree", "elastic scattering");
     tree->Branch("ini_particle", &ini_particle, "ini_particle/I");
@@ -26,18 +27,19 @@ int main( int argc, char **argv )
     tree->Branch("ini_y", &ini_y, "ini_y/D");
     tree->Branch("ini_z", &ini_z, "ini_z/D");
     tree->Branch("ini_energy", &ini_energy, "ini_energy/D");
-    tree->Branch("frag_reac", &frag_reac, "frag_reac/I");
+    tree->Branch("flag_reac", &flag_reac, "flag_reac/I");
     tree->Branch("scat_x", &scat_x, "scat_x/D");
     tree->Branch("scat_y", &scat_y, "scat_y/D");
     tree->Branch("scat_z", &scat_z, "scat_z/D");
     tree->Branch("scat_energy", &scat_energy, "scat_energy/D");
     tree->Branch("cm_ang", &cm_ang, "cm_ang/D");
+    tree->Branch("r_min", &r_min, "r_min/D");
     tree->Branch("part1_theta", &part1_theta, "part1_theta/D");
     tree->Branch("part1_phi", &part1_phi, "part1_phi/D");
-    tree->Branch("part2_theta", &part2_theta, "part2_theta/D");
-    tree->Branch("part2_phi", &part2_phi, "part2_phi/D");
     tree->Branch("part1_energy", &part1_energy, "part1_energy/D");
     tree->Branch("part1_det_energy", &part1_det_energy, "part1_det_energy/D");
+    tree->Branch("part2_theta", &part2_theta, "part2_theta/D");
+    tree->Branch("part2_phi", &part2_phi, "part2_phi/D");
     tree->Branch("part2_energy", &part2_energy, "part2_energy/D");
     tree->Branch("part2_det_energy", &part2_det_energy, "part2_det_energy/D");
 
@@ -60,9 +62,9 @@ int main( int argc, char **argv )
     for(int loop=0; loop<beam_test->get_ini_num(); loop++){
         ini_particle = -9999;
         ini_x=-9999.0, ini_y=-9999.0, ini_z=-9999.0, ini_energy=-9999.0;
-        frag_reac=-9999;
+        flag_reac=-9999;
         scat_x=-9999.0, scat_y=-9999.0, scat_z=-9999.0, scat_energy=-9999.0;
-        cm_ang=-9999.0, part1_theta=-9999.0, part1_phi=-9999.0, part2_theta=-9999.0, part2_phi=-9999.0;
+        cm_ang=-9999.0, r_min=-9999.0, part1_theta=-9999.0, part1_phi=-9999.0, part2_theta=-9999.0, part2_phi=-9999.0;
         part1_energy=-9999.0, part1_det_energy=-9999.0, part2_energy=-9999.0, part2_det_energy=-9999.0;
 
         if((loop+1)%10==0){
@@ -77,20 +79,23 @@ int main( int argc, char **argv )
         ini_z = particle[4];
         ini_energy = particle[1];
 
-        beam_test->reation_loc_target(particle);
-        int reaction_frag = beam_test->judge_interact(particle);
-        frag_reac = reaction_frag;
-        if(reaction_frag == 0){
+        int reaction_flag = beam_test->judge_interact(particle);
+        flag_reac = reaction_flag;
+        if(reaction_flag == 0){
             //tree->Fill();
             continue;
         }
+        beam_test->reation_loc_target(particle);
+        
         scat_x = particle[2];
         scat_y = particle[3];
         scat_z = particle[4];
         scat_energy = particle[1];
 
-        double ang = beam_test->scatter(reaction_frag, particle, particle1, particle2);
+        double ang = beam_test->scatter(reaction_flag, particle, particle1, particle2);
+        double min_distance = beam_test->nearest_distance(reaction_flag, ang, particle[1]);
         cm_ang = ang;
+        r_min = min_distance;
         part1_theta = particle1[5];
         part1_phi = particle1[6];
         part2_theta = particle2[5];
@@ -98,20 +103,20 @@ int main( int argc, char **argv )
         part1_energy = particle1[1];
         part2_energy = particle2[1];
 
-        int frag1, frag2;
-        frag1 = beam_test->leave_target(particle1);
-        if(frag1 == 1){
+        int flag1, flag2;
+        flag1 = beam_test->leave_target(particle1);
+        if(flag1 == 1){
             part1_det_energy = particle1[1];
-            int frag1_detector;
-            frag1_detector = beam_test->judge_detector(particle1);
-            if(frag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
+            int flag1_detector;
+            flag1_detector = beam_test->judge_detector(particle1);
+            if(flag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
         }
-        frag2 = beam_test->leave_target(particle2);
-        if(frag2 == 1){
+        flag2 = beam_test->leave_target(particle2);
+        if(flag2 == 1){
             part2_det_energy = particle2[1];
-            int frag2_detector;
-            frag2_detector = beam_test->judge_detector(particle2);
-            if(frag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
+            int flag2_detector;
+            flag2_detector = beam_test->judge_detector(particle2);
+            if(flag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
         }
         tree->Fill();
 

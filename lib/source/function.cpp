@@ -9,6 +9,7 @@ using namespace std;
 
 const double STANDARD::HBAR_C = 197.327; //MeV fm
 const double STANDARD::ALPHA = 1.0 / 137.036;
+const double STANDARD::AVOGADRO = 6.02214076e+23;
 
 //unit of mass : MeV/c2
 const double MASS::MASS_6HE = 6018885.889 * 1.0e-6 * 931.494013;
