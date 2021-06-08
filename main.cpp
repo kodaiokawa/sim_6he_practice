@@ -110,14 +110,14 @@ int main( int argc, char **argv )
             int flag1_detector;
             flag1_detector = beam_test->judge_detector(particle1);
             if(flag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
-        }
+        }else{ part1_det_energy = 0.0; }
         flag2 = beam_test->leave_target(particle2);
         if(flag2 == 1){
             part2_det_energy = particle2[1];
             int flag2_detector;
             flag2_detector = beam_test->judge_detector(particle2);
             if(flag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
-        }
+        }else{ part2_det_energy = 0.0; }
         tree->Fill();
 
     }
