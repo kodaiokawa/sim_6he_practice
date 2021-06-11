@@ -57,7 +57,7 @@ void Beam::print_cond()
     cout << "detector angle : " << strip_ang << " deg" << endl;
     cout << "particle energy : " << particle_energy << " MeV/u" << endl;
     cout << "distance between detector and target : " << R << " cm" << endl;
-    cout << "Si detector sigma : " << detector_sigma << " MeV" << endl;
+    //cout << "Si detector sigma : " << detector_sigma << " MeV" << endl;
     cout << "*****************************" << endl;
     cout << endl;
 }
@@ -276,6 +276,27 @@ int Beam::judge_detector(double particle[7])
     conv_y += factor*conv_v;
     if(abs(conv_x) < strip_x && abs(conv_y) < strip_y){ flag = 1; }
     return flag;
+}
+
+void Beam::to_detector(double particle[7])
+{
+    const double to_rad = M_PI / 180.0;
+    double x = particle[2];
+    double y = particle[3];
+    double z = particle[4];
+    double theta = particle[5] * to_rad;
+    double phi = particle[6] * to_rad;
+
+    double del_r = 0.01;
+
+    while(x*x + y*y + z*z < R*R){
+        x += del_r * sin(theta) * cos(phi);
+        y += del_r * sin(theta) * sin(phi);
+        z += del_r * cos(theta);
+    }
+    particle[2] = x;
+    particle[3] = y;
+    particle[4] = z;
 }
 
 double Beam::energy_detector(double energy)

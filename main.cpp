@@ -19,6 +19,7 @@ int main( int argc, char **argv )
     double scat_x, scat_y, scat_z, scat_energy;
     double cm_ang, part1_theta, part1_phi, part2_theta, part2_phi;
     double part1_energy, part1_det_energy, part2_energy, part2_det_energy;
+    double part1_x, part1_y, part1_z, part2_x, part2_y, part2_z;
     double r_min;
 
     TTree *tree = new TTree("tree", "elastic scattering");
@@ -38,10 +39,16 @@ int main( int argc, char **argv )
     tree->Branch("part1_phi", &part1_phi, "part1_phi/D");
     tree->Branch("part1_energy", &part1_energy, "part1_energy/D");
     tree->Branch("part1_det_energy", &part1_det_energy, "part1_det_energy/D");
+    tree->Branch("part1_x", &part1_x, "part1_x/D");
+    tree->Branch("part1_y", &part1_y, "part1_y/D");
+    tree->Branch("part1_z", &part1_z, "part1_z/D");
     tree->Branch("part2_theta", &part2_theta, "part2_theta/D");
     tree->Branch("part2_phi", &part2_phi, "part2_phi/D");
     tree->Branch("part2_energy", &part2_energy, "part2_energy/D");
     tree->Branch("part2_det_energy", &part2_det_energy, "part2_det_energy/D");
+    tree->Branch("part2_x", &part2_x, "part2_x/D");
+    tree->Branch("part2_y", &part2_y, "part2_y/D");
+    tree->Branch("part2_z", &part2_z, "part2_z/D");
 
 
     Beam *beam_test = new Beam();
@@ -56,7 +63,7 @@ int main( int argc, char **argv )
     //particle[3]: location_y
     //particle[4]: location_z
     double particle[5], particle1[7], particle2[7];
-    TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
+    //TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
 
 
     for(int loop=0; loop<beam_test->get_ini_num(); loop++){
@@ -107,17 +114,37 @@ int main( int argc, char **argv )
         flag1 = beam_test->leave_target(particle1);
         if(flag1 == 1){
             part1_det_energy = particle1[1];
+            beam_test->to_detector(particle1);
+            part1_x = particle1[2];
+            part1_y = particle1[3];
+            part1_z = particle1[4];
+
             int flag1_detector;
             flag1_detector = beam_test->judge_detector(particle1);
-            if(flag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
-        }else{ part1_det_energy = 0.0; }
+            //if(flag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
+        }else{
+            part1_det_energy = 0.0;
+            part1_x = 0.0;
+            part1_y = 0.0;
+            part1_z = 0.0;
+        }
         flag2 = beam_test->leave_target(particle2);
         if(flag2 == 1){
             part2_det_energy = particle2[1];
+            beam_test->to_detector(particle2);
+            part2_x = particle2[2];
+            part2_y = particle2[3];
+            part2_z = particle2[4];
+
             int flag2_detector;
             flag2_detector = beam_test->judge_detector(particle2);
-            if(flag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
-        }else{ part2_det_energy = 0.0; }
+            //if(flag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
+        }else{
+            part2_det_energy = 0.0;
+            part2_x = 0.0;
+            part2_y = 0.0;
+            part2_z = 0.0;
+        }
         tree->Fill();
 
     }
@@ -125,7 +152,7 @@ int main( int argc, char **argv )
     TString ofn = "../rootfile/simulation.root";
     TFile *fout = new TFile(ofn, "recreate");
     tree->Write();
-    h_strip->Write();
+    //h_strip->Write();
     fout->Close();
 
     cout << endl;

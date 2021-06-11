@@ -29,6 +29,7 @@ class Beam
         int leave_target(double particle[7]);
 
         int judge_detector(double particle[7]);
+        void to_detector(double particle[7]);
         double energy_detector(double energy);
 };
 
