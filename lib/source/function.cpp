@@ -78,7 +78,10 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
 
 double all_cross_section(double energy, int reaction) //cm2
 {
-    double E = cm_energy(energy, reaction);
+    //double E = cm_energy(energy, reaction);
+    double E;
+    if(reaction == 1 || reaction == 2){ E = energy * 6.0; }
+    else if(reaction == 3 || reaction == 4){ E = energy * 3.0; }
     double value = 0.0;
     double factor = ((STANDARD::ALPHA*STANDARD::HBAR_C*1.0e-13) / (4.0*E) )*((STANDARD::ALPHA*STANDARD::HBAR_C*1.0e-13) / (4.0*E) );
     if(reaction == 1){

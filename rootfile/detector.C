@@ -1,18 +1,26 @@
 {
-    //double pi = 4.0 * atan(1.0);
-    //double tmp = 6.0 * (4.0 * atan(1.0) / 180.0); //strip angle
-    //cout << sin(tmp) << endl;
+  Det_Si *t = new Det_Si();
+  t->Loop();
 
-    //TString conv_x = "part1_z*sin(angle) + part1_x*cos(angle)";
+  TCanvas *c2 = new TCanvas("c2", "c2");
+  h_1->SetMaximum(100.0);
+  h_1->Draw();
+  h_2->Draw("same");
+  h_3->Draw("same");
+  h_4->Draw("same");
 
-    //tree->SetAlias("detector", "part1_z*sin(angle) + part1_x*cos(angle) < 5.0/32.0 && part1_z*sin(angle) + part1_x*cos(angle) > -5.0/32.0 && part1_y < 2.5 && part1_y > -2.5");
+  TLegend *legend = new TLegend();
+  legend->AddEntry( h_1, "6he+p" , "l");
+  legend->AddEntry( h_2, "6he+C" , "l");
+  legend->AddEntry( h_3, "3h+p" , "l");
+  legend->AddEntry( h_4, "3h+C" , "l");
+  legend->SetFillColor(0);
+  legend->SetBorderSize(0);
+  legend->Draw();
 
-    //tree->Draw("part1_x:part1_y:part1_z", "flag_reac == 1 && part1_z>1.0 && part1_z*sin(tmp) + part1_x*cos(tmp) < 5.0/32.0 && part1_z*sin(tmp) + part1_x*cos(tmp) > -5.0/32.0 && part1_y < 2.5 && part1_y > -2.5");
-
-
-    double tmp = 45.0 * (4.0 * atan(1.0) / 180.0); //strip angle
-    tree->SetMarkerStyle(6);
-    tree->Draw("part1_y:part1_z:part1_x>>h", "flag_reac == 1 && part1_z>1.0 && (part1_z*sin(pi) + part1_x*cos(pi)) < 5.0/32.0 && (part1_z*sin(pi) + part1_x*cos(pi)) > -5.0/32.0 && part1_y < 2.5 && part1_y > -2.5");
-
-
+  cout << "Count (100s)" << endl;
+  cout << " 6he+p: " << h_1->GetEntries() << endl;
+  cout << " 6he+C: " << h_2->GetEntries() << endl;
+  cout << " 3h+p:  " << h_3->GetEntries() << endl;
+  cout << " 3h+C:  " << h_4->GetEntries() << endl;
 }

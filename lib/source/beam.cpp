@@ -72,8 +72,8 @@ void Beam::generate_beam(double particle[5])
     if(generate_standard()<purity){ particle[0]=1.0; } //particle[0]>0 : 6he
     else{ particle[0]=-1.0; }
     particle[1] = particle_energy; //MeV/u
-    particle[2] = generate_normal(0.0, 1.0); //cm
-    particle[3] = generate_normal(0.0, 1.0);
+    particle[2] = generate_normal(0.0, 0.5); //cm
+    particle[3] = generate_normal(0.0, 0.5);
     particle[4] = -thickness/2.0;
 } 
 
