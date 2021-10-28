@@ -1,4 +1,4 @@
-# Install script for directory: /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/lib
+# Install script for directory: /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
