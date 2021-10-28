@@ -7,14 +7,14 @@ using namespace std;
 class Beam
 {
     private:
-        int num_cond = 11;
-        double time, intensity, purity, thickness, density, strip_x, strip_y, strip_ang, particle_energy;
+        int num_cond = 12;
+        double time, intensity, purity, thickness, target_purity, density, strip_x, strip_y, strip_ang, particle_energy;
         double R, detector_sigma;
     public:
         void set_condition(string filepath);
         void print_cond();
         int get_ini_num();
-        void generate_beam(double particle[5]);
+        void generate_beam(double particle[]);
         
         //it is proto type
         void reation_loc_target(double particle[5]);

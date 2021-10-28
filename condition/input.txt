@@ -1,8 +1,9 @@
 ****** write experimental condition (prease refer ./sample.txt) ******
-0.1
+0.01
 1.5e+6
 0.7
 50.0
+0.66
 6.44e+20
 5.0
 0.3125

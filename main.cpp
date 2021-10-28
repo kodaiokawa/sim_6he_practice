@@ -48,6 +48,11 @@ int main( int argc, char **argv )
     beam_test->set_condition(filename);
     beam_test->print_cond();
 
+
+
+    //Put the initial particle information into the particle[]
+    //the particle after reaction is particle1[] and particle2[]
+    
     //particle[0]: particle type >6he <3H
     //particle[1]: particle energy
     //particle[2]: location_x (cm)
@@ -72,10 +77,10 @@ int main( int argc, char **argv )
         beam_test->generate_beam(particle);
         if(particle[0] > 0.0){ ini_particle = 0;}
         else { ini_particle = 1; }
+        ini_energy = particle[1]; //MeV/u
         ini_x = particle[2];
         ini_y = particle[3];
         ini_z = particle[4];
-        ini_energy = particle[1];
 
         beam_test->reation_loc_target(particle);
         int reaction_frag = beam_test->judge_interact(particle);

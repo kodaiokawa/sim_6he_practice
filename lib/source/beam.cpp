@@ -12,7 +12,6 @@ using namespace std;
 void Beam::set_condition(string filepath)
 {
     double input_data[num_cond];
-    //write a path to condition directry
     ifstream fin_initial(filepath);
     cout << "...reading " << filepath << endl;
     if(!fin_initial){
@@ -28,14 +27,15 @@ void Beam::set_condition(string filepath)
     time = input_data[0];
     intensity = input_data[1];
     purity = input_data[2];
-    thickness = input_data[3] * 1.0e-4;
-    density = input_data[4];
-    strip_x = input_data[5];
-    strip_y = input_data[6];
-    strip_ang = input_data[7];
-    particle_energy = input_data[8];
-    R = input_data[9];
-    detector_sigma = input_data[10];
+    thickness = input_data[3] * 1.0e-4; // um -> cm
+    target_purity = input_data[4];
+    density = input_data[5];
+    strip_x = input_data[6];
+    strip_y = input_data[7];
+    strip_ang = input_data[8];
+    particle_energy = input_data[9];
+    R = input_data[10];
+    detector_sigma = input_data[11];
 }
 
 
@@ -45,14 +45,15 @@ void Beam::print_cond()
     cout << "***** initial condition *****" << endl;
     cout << "experiment time  : " << time << " s" << endl;
     cout << "beam intensity : " << intensity << " pps" << endl;
-    cout << "6He purity : " << purity * 100.0 << " %" << endl;
-    cout << "target(C2H4) thickness : " << thickness * 1.0e+4 << " um" << endl;
+    cout << "purity of main beam : " << purity * 100.0 << " %" << endl;
+    cout << "target thickness : " << thickness * 1.0e+4 << " um" << endl;
+    cout << "purity of main target : " << target_purity * 100.0 << " %" << endl;
     cout << "target density : " << density << " atoms/cm2" << endl;
-    cout << "size of detector : " << strip_x << " x " << strip_y << " cm2" << endl;
+    cout << "size of strip : " << strip_x << " x " << strip_y << " cm2" << endl;
     cout << "detector angle : " << strip_ang << " deg" << endl;
     cout << "particle energy : " << particle_energy << " MeV/u" << endl;
     cout << "distance between detector and target : " << R << " cm" << endl;
-    cout << "Si detector sigma : " << detector_sigma << " MeV" << endl;
+    cout << "energy resolution : " << detector_sigma << " MeV" << endl;
     cout << "*****************************" << endl;
     cout << endl;
 }
@@ -63,11 +64,11 @@ int Beam::get_ini_num()
 }
 
 
-void Beam::generate_beam(double particle[5])
+void Beam::generate_beam(double particle[])
 {
-    if(generate_standard()<purity){ particle[0]=1.0; } //particle[0]>0 : 6he
-    else{ particle[0]=-1.0; }
-    particle[1] = particle_energy;
+    if(generate_standard()<purity){ particle[0]=1.0; } //particle[0]>0 : main particle
+    else{ particle[0]=-1.0; } // another particle
+    particle[1] = particle_energy; // MeV/u
     particle[2] = generate_normal(0.0, 1.0); //cm
     particle[3] = generate_normal(0.0, 1.0);
     particle[4] = -thickness/2.0;
