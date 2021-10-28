@@ -14,3 +14,4 @@ after that, I think the /build/a.out file is created, so the program can be done
 ```console
 ./a.out
 ```
+> the condition file is written in relative path, so please execute this command in /build directory

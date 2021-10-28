@@ -44,7 +44,7 @@ int main( int argc, char **argv )
 
     Beam *beam_test = new Beam();
     //write an input file
-    string filename("/Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/condition/input.txt");
+    string filename("../condition/input.txt");
     beam_test->set_condition(filename);
     beam_test->print_cond();
 
