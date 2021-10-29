@@ -74,10 +74,11 @@ void Beam::generate_beam(double particle[])
     particle[4] = -thickness/2.0;
 } 
 
-//もし、反応したと仮定した時のtarget内での位置を指定し、エネルギー損失を考えた値を格納する(*** from lise++ value ***)
-void Beam::reation_loc_target(double particle[5])
+//Specify the position in the target if the reaction occured, and store the value considering the energy loss (from lise++ value)
+//THIS FUNCTION HAS PROBLEM
+void Beam::reation_loc_target(double particle)
 {
-    double stop_length = generate_standard() * thickness; //um
+    double stop_length = generate_standard() * thickness; //cm
     particle[4] += stop_length;
     double energy_loss;
     double energy_straggling;
@@ -93,18 +94,18 @@ void Beam::reation_loc_target(double particle[5])
 
 }
 
-int Beam::judge_interact(double particle[5])
+int Beam::judge_interact(double particle)
 {
-    if(particle[0] > 0){ //in case of 6he beam
-        double ratio_reaction1 = all_cross_section(particle[1], 1) * density * (2.0/3.0);
-        double ratio_reaction2 = all_cross_section(particle[1], 2) * density * (1.0/3.0);
+    if(particle[0] > 0){ //in case of main beam (6He)
+        double ratio_reaction1 = all_cross_section(particle[1], 1) * density * target_purity;
+        double ratio_reaction2 = all_cross_section(particle[1], 2) * density * (1.0 - target_purity);
         double judge = generate_standard();
         if(judge < ratio_reaction1){ return 1; }
         else if(judge < ratio_reaction1 + ratio_reaction2){ return 2; }
         else { return 0; }
-    }else{ //in case of 3h beam
-        double ratio_reaction3 = all_cross_section(particle[1], 3) * density * (2.0/3.0);
-        double ratio_reaction4 = all_cross_section(particle[1], 4) * density * (1.0/3.0);
+    }else{ //in case of another beam (3H)
+        double ratio_reaction3 = all_cross_section(particle[1], 3) * density * target_purity;
+        double ratio_reaction4 = all_cross_section(particle[1], 4) * density * (1.0 - target_purity);
         double judge = generate_standard();
         if(judge < ratio_reaction3){ return 3; }
         else if(judge < ratio_reaction3 + ratio_reaction4){ return 4; }

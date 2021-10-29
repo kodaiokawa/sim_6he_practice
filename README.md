@@ -10,8 +10,8 @@ simulation practice of 6he experiment as my first project
 
 ## algorithm
 1. generate the beam
-  1. Using random numbers to determine the type of particles
-  2. I assume that the beam spread is according to the Gaussian with sigma=1.0
+   1. Using random numbers to determine the type of particles
+   2. I assume that the beam spread is according to the Gaussian with sigma=1.0
 2. judge whether reaction is occur or not
 
 prepareing...
