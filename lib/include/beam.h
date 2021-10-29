@@ -15,11 +15,9 @@ class Beam
         void print_cond();
         int get_ini_num();
         void generate_beam(double particle[]);
-        
-        //it is proto type
-        void reation_loc_target(double particle[5]);
-        
-        int judge_interact(double particle[5]);
+        void reation_loc_target(double particle[]);
+        int judge_interact(double particle[]);
+
         double scatter(int reaction, double particle[5], double particle1[7], double particle2[7]);
 
         //it is proto type

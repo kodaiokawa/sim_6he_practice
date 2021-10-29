@@ -16,16 +16,30 @@ simulation practice of 6he experiment as my first project
 
 prepareing...
 
+## Problems
+1. The position (depth) where the particle stops in the sample is assumed to be uniform
+2. I don't consider beam bending (deflection?) in the target
+
+
 ## Usage
-if you edit the CMakeLists.txt, prease command in /build directory
+(I don't know it is necessary) please delete the default /build directory (in order to adopt the environment of the PC?)
+```console
+rm -rf build
+```
+And again, make the build directory
+```console
+mkdir build
+cd build
+```
+ prease command in /build directory
 ```console
 cmake ..
 ```
-and you edit some file, type
+Above commands only need to be done once. And you edit some file, type
 ``` console
 make
 ```
-after that, I think the /build/a.out file is created, so the program can be done by
+after that, I think the /build/a.out file is created (in Mac case), so the program can be done by
 ```console
 ./a.out
 ```

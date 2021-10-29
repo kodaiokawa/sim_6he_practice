@@ -16,6 +16,7 @@ struct MASS
   static const double MASS_3H;
   static const double MASS_p;
   static const double MASS_12C;
+  static const double MASS_d;
 };
 
 void test();
