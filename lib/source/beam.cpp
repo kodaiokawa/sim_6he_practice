@@ -76,7 +76,7 @@ void Beam::generate_beam(double particle[])
 
 //Specify the position in the target if the reaction occured, and store the value considering the energy loss (from lise++ value)
 //THIS FUNCTION HAS PROBLEM
-void Beam::reation_loc_target(double particle)
+void Beam::reation_loc_target(double particle[])
 {
     double stop_length = generate_standard() * thickness; //cm
     particle[4] += stop_length;
@@ -94,7 +94,7 @@ void Beam::reation_loc_target(double particle)
 
 }
 
-int Beam::judge_interact(double particle)
+int Beam::judge_interact(double particle[])
 {
     if(particle[0] > 0){ //in case of main beam (6He)
         double ratio_reaction1 = all_cross_section(particle[1], 1) * density * target_purity;
