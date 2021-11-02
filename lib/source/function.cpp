@@ -75,7 +75,7 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
     return (E1_CM + E2_CM) - (mass_projectile + mass_target);
 }
 
-double all_cross_section(double energy, int reaction) //cm2
+double elastic_cross_section(double energy, int reaction) //cm2
 {
     double E = cm_energy(energy, reaction);
     double value = 0.0;
@@ -105,7 +105,7 @@ double all_cross_section(double energy, int reaction) //cm2
 }
 
 
-double generate_cm_angle()
+double generate_cm_angle_elastic()
 {
     double norm = 0.0;
 

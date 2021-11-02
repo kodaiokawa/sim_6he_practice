@@ -25,7 +25,7 @@ double generate_standard();
 double generate_normal(double mu, double sigma);
 
 double cm_energy(double energy, int reaction);
-double all_cross_section(double energy, int reaction); //cm2
-double generate_cm_angle();
+double elastic_cross_section(double energy, int reaction); //cm2
+double generate_cm_angle_elastic();
 
 

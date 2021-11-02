@@ -97,15 +97,15 @@ void Beam::reation_loc_target(double particle[])
 int Beam::judge_interact(double particle[])
 {
     if(particle[0] > 0){ //in case of main beam (6He)
-        double ratio_reaction1 = all_cross_section(particle[1], 1) * density * target_purity;
-        double ratio_reaction2 = all_cross_section(particle[1], 2) * density * (1.0 - target_purity);
+        double ratio_reaction1 = elastic_cross_section(particle[1], 1) * density * target_purity;
+        double ratio_reaction2 = elastic_cross_section(particle[1], 2) * density * (1.0 - target_purity);
         double judge = generate_standard();
         if(judge < ratio_reaction1){ return 1; }
         else if(judge < ratio_reaction1 + ratio_reaction2){ return 2; }
         else { return 0; }
     }else{ //in case of another beam (3H)
-        double ratio_reaction3 = all_cross_section(particle[1], 3) * density * target_purity;
-        double ratio_reaction4 = all_cross_section(particle[1], 4) * density * (1.0 - target_purity);
+        double ratio_reaction3 = elastic_cross_section(particle[1], 3) * density * target_purity;
+        double ratio_reaction4 = elastic_cross_section(particle[1], 4) * density * (1.0 - target_purity);
         double judge = generate_standard();
         if(judge < ratio_reaction3){ return 3; }
         else if(judge < ratio_reaction3 + ratio_reaction4){ return 4; }
@@ -138,7 +138,7 @@ double Beam::scatter(int reaction, double particle[5], double particle1[7], doub
         exit(1);
     }
 
-    double Theta = generate_cm_angle(); // degree
+    double Theta = generate_cm_angle_elastic(); // degree
     double E1; // MeV 実験室系のエネルギー
     if(reaction == 1 || reaction == 2){ E1 = particle[1]*6.0 + M1; }
     else if(reaction == 3 || reaction == 4){ E1 = particle[1]*3.0 + M1; }
