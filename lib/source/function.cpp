@@ -131,13 +131,13 @@ double generate_cm_angle_elastic()
 }
 
 
-double list_cross_section(string filename)
+double list_cross_section(string datafile)
 {
   return 0.0;
 }
 
 
-double generate_cm_ange_list(string filename)
+double generate_cm_ange_list(string datafile)
 {
   return 0.0;
 }

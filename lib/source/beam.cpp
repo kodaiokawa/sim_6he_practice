@@ -94,14 +94,21 @@ void Beam::reation_loc_target(double particle[])
 
 }
 
-int Beam::judge_interact(double particle[])
+int Beam::judge_interact(double particle[], string datafile)
 {
     if(particle[0] > 0){ //in case of main beam (6He)
         double ratio_reaction1 = elastic_cross_section(particle[1], 1) * density * target_purity;
         double ratio_reaction2 = elastic_cross_section(particle[1], 2) * density * (1.0 - target_purity);
+        double ratio_main_reaction;
+
+        ifstream fdata(datafile);
+        if(!fdata){ ratio_main_reaction = 0.0; }
+        else{ ratio_main_reaction = list_cross_section(datafile) * density * target_purity; }
+
         double judge = generate_standard();
         if(judge < ratio_reaction1){ return 1; }
         else if(judge < ratio_reaction1 + ratio_reaction2){ return 2; }
+        else if(judge < ratio_reaction1 + ratio_reaction2 + ratio_main_reaction){ return 10; }
         else { return 0; }
     }else{ //in case of another beam (3H)
         double ratio_reaction3 = elastic_cross_section(particle[1], 3) * density * target_purity;

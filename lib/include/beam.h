@@ -16,7 +16,7 @@ class Beam
         int get_ini_num();
         void generate_beam(double particle[]);
         void reation_loc_target(double particle[]);
-        int judge_interact(double particle[]);
+        int judge_interact(double particle[], string datafile);
 
         double scatter(int reaction, double particle[5], double particle1[7], double particle2[7]);
 
