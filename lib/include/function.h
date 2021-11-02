@@ -8,6 +8,8 @@ struct STANDARD
 {
   static const double HBAR_C;
   static const double ALPHA;
+  static const double TO_RAD;
+  static const double TO_DEG;
 };
 
 struct MASS

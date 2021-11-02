@@ -9,6 +9,8 @@ using namespace std;
 
 const double STANDARD::HBAR_C = 197.327; //MeV fm
 const double STANDARD::ALPHA = 1.0 / 137.036;
+const double STANDARD::TO_RAD = M_PI / 180.0;
+const double STANDARD::TO_DEG = 180.0 / M_PI;
 
 //unit of mass : MeV/c2
 const double MASS::MASS_6HE = 6018885.889 * 1.0e-6 * 931.494013;
