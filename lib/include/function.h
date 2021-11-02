@@ -28,4 +28,8 @@ double cm_energy(double energy, int reaction);
 double elastic_cross_section(double energy, int reaction); //cm2
 double generate_cm_angle_elastic();
 
+double list_cross_section(string filename);
+double generate_cm_angle_list(string filename);
+
+
 
