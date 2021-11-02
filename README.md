@@ -1,6 +1,10 @@
 # sim_6he_practice
 simulation practice of 6he experiment as my first project
 
+# 作業メモ
+* 非弾性散乱を、任意のヒストグラムから考慮できるようにしているつもり
+* このままだとエラーを吐くままなので、弾性散乱と非弾性散乱で処理を変えるという部分を加える必要がある
+
 ## Assumption
 * I assume that the size of Si detector is 5.0 cm x 5.0 cm and it has 16 strips in X and Y axis
 * The beam and the center axis of the detector are aligned

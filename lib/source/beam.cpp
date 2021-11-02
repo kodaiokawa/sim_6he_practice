@@ -102,8 +102,9 @@ int Beam::judge_interact(double particle[], string datafile)
         double ratio_main_reaction;
 
         ifstream fdata(datafile);
-        if(!fdata){ ratio_main_reaction = 0.0; }
-        else{ ratio_main_reaction = list_cross_section(datafile) * density * target_purity; }
+        if(!fdata){
+          ratio_main_reaction = 0.0;
+        }else{ ratio_main_reaction = list_cross_section(datafile) * density * target_purity; }
 
         double judge = generate_standard();
         if(judge < ratio_reaction1){ return 1; }
@@ -141,7 +142,7 @@ double Beam::scatter(int reaction, double particle[5], double particle1[7], doub
         M1 = M3 = MASS::MASS_3H;
         M2 = M4 = MASS::MASS_12C;
     }else{
-        cout << "ERROR" << endl;
+        cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
     }
 

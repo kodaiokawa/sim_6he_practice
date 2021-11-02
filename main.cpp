@@ -7,11 +7,19 @@
 
 #include <iostream>
 #include <cmath>
+#include <fstream>
 
 using namespace std;
 
 int main( int argc, char **argv )
 {
+    //prepare datafile
+    string datafile("../database/cross_section/cs_6he_d_Ecm10MeV.txt");
+    ifstream fdata(datafile);
+    if(!fdata){
+      cout << "CANNOT USE " << datafile << endl;
+    }
+
     //prepare for rootfile
     int ini_particle;
     double ini_x, ini_y, ini_z, ini_energy;
@@ -82,13 +90,20 @@ int main( int argc, char **argv )
         ini_y = particle[3];
         ini_z = particle[4];
 
-        beam_test->reation_loc_target(particle);
-        int reaction_frag = beam_test->judge_interact(particle);
+        int reaction_frag = beam_test->judge_interact(particle, datafile);
         frag_reac = reaction_frag;
+        //debug
+        if(reaction_frag == 10){
+          cout << "inelastic" << endl;
+          exit(1);
+        }
+
         if(reaction_frag == 0){
             tree->Fill();
             continue;
         }
+        beam_test->reation_loc_target(particle);
+
         scat_x = particle[2];
         scat_y = particle[3];
         scat_z = particle[4];

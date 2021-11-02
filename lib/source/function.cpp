@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
@@ -62,7 +63,7 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
         mass_target = MASS::MASS_12C;
         E1 = energy*3.0 + mass_projectile;
     }else{
-        cout << "ERROR" << endl;
+        cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
     }
 
@@ -91,7 +92,7 @@ double elastic_cross_section(double energy, int reaction) //cm2
     }else if(reaction == 4){
         factor *= (1.0 * 6.0) * (1.0 * 6.0);
     }else{
-        cout << "ERROR" << endl;
+        cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
     }
 
@@ -135,11 +136,56 @@ double generate_cm_angle_elastic()
 
 double list_cross_section(string datafile)
 {
-  return 0.0;
+  ifstream fdata(datafile);
+  if(!fdata){
+    cout << "ERROR: failure to open " << datafile << endl;
+    exit(1);
+  }
+
+  double all_cs = 0.0;
+  string str;
+  getline(fdata, str);
+  int num = atoi(str.c_str());
+  double width = 180.0/num;
+  double ang, dif_cs;
+  while(fdata >> ang >> dif_cs){
+    all_cs += dif_cs * width * STANDARD::TO_RAD;
+  }
+  return all_cs * 2.0 * M_PI;
 }
 
 
 double generate_cm_ange_list(string datafile)
 {
-  return 0.0;
+  ifstream fdata(datafile);
+  if(!fdata){
+    cout << "ERROR: failure to open " << datafile << endl;
+    exit(1);
+  }
+  //double norm = list_cross_section(datafile) / 2.0 / M_PI;
+  string str;
+  getline(fdata, str);
+  const int num = atoi(str.c_str());
+  double width = 180.0/num;
+  double cs[2][num];
+  double ang, dif_cs, tmp=0.0;
+  for(int i=0; i<num; i++){
+    fdata >> ang >> dif_cs;
+    tmp += dif_cs;
+    cs[0][i] = ang;
+    cs[1][i] = tmp;
+  }
+
+  double judge = cs[1][num-1] * generate_standard();
+  double cm_ang;
+  for(int i=0; i<num; i++){
+    if(judge < cs[1][i]){
+      if(i==0){ cm_ang = 0.5 * width * generate_standard(); }
+      else if(i==num-1){ cm_ang = 180.0 - 0.5 * width * generate_standard(); }
+      else{ cm_ang = (cs[0][i] - 0.5 * width) + width * generate_standard(); } 
+      break;
+    }
+  }
+
+  return cm_ang;
 }
