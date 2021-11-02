@@ -9,6 +9,5 @@
 0.3125    //the length of the Si strip (horizontal) (cm)
 17.0      //angle (position) of the center of the detector (deg)
 8.0       //energy of the initial particle (MeV/u)
-15.0      //the distance between the center of target and the center of
-detector (cm)
+15.0      //the distance between the center of target and the center of detector (cm)
 0.5       //energy resolution of Si detector (MeV)
