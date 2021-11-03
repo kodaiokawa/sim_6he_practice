@@ -14,10 +14,24 @@ const double STANDARD::TO_RAD = M_PI / 180.0;
 const double STANDARD::TO_DEG = 180.0 / M_PI;
 
 //unit of mass : MeV/c2
-const double MASS::MASS_6HE = 6018885.889 * 1.0e-6 * 931.494013;
-const double MASS::MASS_3H = 3016049.28132 * 1.0e-6 * 931.494013;
-const double MASS::MASS_p = 1007825.031898 * 1.0e-6 * 931.494013;
-const double MASS::MASS_12C = 12000000.0 * 1.0e-6 * 931.494013;
+const double MASS::MASS_6HE[0] = 6018885.889 * 1.0e-6 * 931.494013;
+const double MASS::MASS_6HE[1] = 6.0;
+const double MASS::MASS_3H[0] = 3016049.28132 * 1.0e-6 * 931.494013;
+const double MASS::MASS_3H[1] = 3.0;
+const double MASS::MASS_p[0] = 1007825.031898 * 1.0e-6 * 931.494013;
+const double MASS::MASS_p[1] = 1.0;
+const double MASS::MASS_12C[0] = 12000000.0 * 1.0e-6 * 931.494013;
+const double MASS::MASS_12C[1] = 12.0;
+const double MASS::MASS_d[0] = 2014101.777844 * 1.0e-6 * 931.494013;
+const double MASS::MASS_d[1] = 2.0;
+const double MASS::MASS_MAIN_BEAM[0] = MASS::MASS_6HE[0];
+const double MASS::MASS_MAIN_BEAM[1] = MASS::MASS_6HE[1];
+const double MASS::MASS_SUB_BEAM[0] = MASS::MASS_3H[0];
+const double MASS::MASS_SUB_BEAM[1] = MASS::MASS_3H[1];
+const double MASS::MASS_MAIN_TARGET[0] = MASS::MASS_d[0];
+const double MASS::MASS_MAIN_TARGET[1] = MASS::MASS_d[1];
+const double MASS::MASS_SUB_TARGET[0] = MASS::MASS_12C[0];
+const double MASS::MASS_SUB_TARGET[1] = MASS::MASS_12C[1];
 
 void test() 
 {
@@ -47,20 +61,20 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
     double mass_target;
     double E1;
     if(reaction == 1){
-        mass_projectile = MASS::MASS_6HE;
-        mass_target = MASS::MASS_p;
+        mass_projectile = MASS::MASS_MAIN_BEAM[0];
+        mass_target = MASS::MASS_MAIN_TARGET[0];
         E1 = energy*6.0 + mass_projectile;
     }else if(reaction == 2){
-        mass_projectile = MASS::MASS_6HE;
-        mass_target = MASS::MASS_12C;
+        mass_projectile = MASS::MASS_MAIN_BEAM[0];
+        mass_target = MASS::MASS_SUB_TARGET[0];
         E1 = energy*6.0 + mass_projectile;
     }else if(reaction == 3){
-        mass_projectile = MASS::MASS_3H;
-        mass_target = MASS::MASS_p;
+        mass_projectile = MASS::MASS_SUB_BEAM[0];
+        mass_target = MASS::MASS_MAIN_TARGET[0];
         E1 = energy*3.0 + mass_projectile;
     }else if(reaction == 4){
-        mass_projectile = MASS::MASS_3H;
-        mass_target = MASS::MASS_12C;
+        mass_projectile = MASS::MASS_SUB_BEAM[0];
+        mass_target = MASS::MASS_SUB_TARGET[0];
         E1 = energy*3.0 + mass_projectile;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
@@ -101,7 +115,6 @@ double elastic_cross_section(double energy, int reaction) //cm2
     for(double angle=1.0; angle<180.0; angle+=del_angle){
         double rad_angle = angle * M_PI / 180.0;
         value += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
-        //cout << angle << " : " << (1.0/pow(sin(rad_angle/2.0), 4.0)) * factor * 1e+27<< endl;
     }
     value *= factor * 2.0 * M_PI;
     return value;
@@ -134,7 +147,7 @@ double generate_cm_angle_elastic()
 }
 
 
-double list_cross_section(string datafile)
+double list_cross_section(string datafile) //cm2
 {
   ifstream fdata(datafile);
   if(!fdata){
@@ -151,7 +164,7 @@ double list_cross_section(string datafile)
   while(fdata >> ang >> dif_cs){
     all_cs += dif_cs * width * STANDARD::TO_RAD;
   }
-  return all_cs * 2.0 * M_PI;
+  return all_cs * 2.0 * M_PI * 1.0e-27;
 }
 
 
@@ -162,7 +175,6 @@ double generate_cm_ange_list(string datafile)
     cout << "ERROR: failure to open " << datafile << endl;
     exit(1);
   }
-  //double norm = list_cross_section(datafile) / 2.0 / M_PI;
   string str;
   getline(fdata, str);
   const int num = atoi(str.c_str());

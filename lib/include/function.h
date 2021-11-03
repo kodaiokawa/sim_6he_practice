@@ -14,11 +14,15 @@ struct STANDARD
 
 struct MASS
 {
-  static const double MASS_6HE;
-  static const double MASS_3H;
-  static const double MASS_p;
-  static const double MASS_12C;
-  static const double MASS_d;
+  static const double MASS_MAIN_BEAM[2];
+  static const double MASS_SUB_BEAM[2];
+  static const double MASS_MAIN_TARGET[2];
+  static const double MASS_SUB_TARGET[2];
+  static const double MASS_6HE[2];
+  static const double MASS_3H[2];
+  static const double MASS_p[2];
+  static const double MASS_12C[2];
+  static const double MASS_d[2];
 };
 
 void test();

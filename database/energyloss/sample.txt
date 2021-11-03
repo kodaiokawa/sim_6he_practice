@@ -1,0 +1,7 @@
+I want to use text file to input the value of the energy loss and energy
+straggling, but I cannot come up with good idea to calculate these value.
+(even if I use LISE++, there are too many parameter, so it is difficult)
+
+in this program, specific value is already written in reaction_loc_target() in
+beam.cpp (it doesn't use this directory)
+

@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.21.3_1/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.21.4/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/Cellar/cmake/3.21.3_1/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.21.4/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -93,26 +93,26 @@ a_out_EXTERNAL_OBJECTS =
 a.out: CMakeFiles/a.out.dir/main.cpp.o
 a.out: CMakeFiles/a.out.dir/build.make
 a.out: lib/librefer.a
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libPhysics.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libPostscript.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libROOTDataFrame.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libROOTNTuple.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libROOTVecOps.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libRint.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libTreePlayer.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libGraf3d.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libGpad.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libGraf.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libHist.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libMatrix.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libTree.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libMathCore.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libImt.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libMultiProc.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libNet.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libRIO.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libThread.so
-a.out: /opt/homebrew/Cellar/root/6.24.04/lib/root/libCore.so
+a.out: /opt/homebrew/lib/root/libPhysics.so
+a.out: /opt/homebrew/lib/root/libPostscript.so
+a.out: /opt/homebrew/lib/root/libROOTDataFrame.so
+a.out: /opt/homebrew/lib/root/libROOTNTuple.so
+a.out: /opt/homebrew/lib/root/libROOTVecOps.so
+a.out: /opt/homebrew/lib/root/libRint.so
+a.out: /opt/homebrew/lib/root/libTreePlayer.so
+a.out: /opt/homebrew/lib/root/libGraf3d.so
+a.out: /opt/homebrew/lib/root/libGpad.so
+a.out: /opt/homebrew/lib/root/libGraf.so
+a.out: /opt/homebrew/lib/root/libHist.so
+a.out: /opt/homebrew/lib/root/libMatrix.so
+a.out: /opt/homebrew/lib/root/libTree.so
+a.out: /opt/homebrew/lib/root/libMathCore.so
+a.out: /opt/homebrew/lib/root/libImt.so
+a.out: /opt/homebrew/lib/root/libMultiProc.so
+a.out: /opt/homebrew/lib/root/libNet.so
+a.out: /opt/homebrew/lib/root/libRIO.so
+a.out: /opt/homebrew/lib/root/libThread.so
+a.out: /opt/homebrew/lib/root/libCore.so
 a.out: CMakeFiles/a.out.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/okawa/work/crib/simulation/6he/sim_6he_practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable a.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/a.out.dir/link.txt --verbose=$(VERBOSE)

@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.21.3_1/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.21.4/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/Cellar/cmake/3.21.3_1/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.21.4/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/okawa/work/crib/simulation/6he/sim_6he_practice/build
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/homebrew/Cellar/cmake/3.21.3_1/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.21.4/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/opt/homebrew/Cellar/cmake/3.21.3_1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.21.4/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -178,6 +178,30 @@ source/function.cpp.s:
 	cd /Users/okawa/work/crib/simulation/6he/sim_6he_practice/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/function.cpp.s
 .PHONY : source/function.cpp.s
 
+source/mass.o: source/mass.cpp.o
+.PHONY : source/mass.o
+
+# target to build an object file
+source/mass.cpp.o:
+	cd /Users/okawa/work/crib/simulation/6he/sim_6he_practice/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/mass.cpp.o
+.PHONY : source/mass.cpp.o
+
+source/mass.i: source/mass.cpp.i
+.PHONY : source/mass.i
+
+# target to preprocess a source file
+source/mass.cpp.i:
+	cd /Users/okawa/work/crib/simulation/6he/sim_6he_practice/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/mass.cpp.i
+.PHONY : source/mass.cpp.i
+
+source/mass.s: source/mass.cpp.s
+.PHONY : source/mass.s
+
+# target to generate assembly for a file
+source/mass.cpp.s:
+	cd /Users/okawa/work/crib/simulation/6he/sim_6he_practice/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/refer.dir/build.make lib/CMakeFiles/refer.dir/source/mass.cpp.s
+.PHONY : source/mass.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -193,6 +217,9 @@ help:
 	@echo "... source/function.o"
 	@echo "... source/function.i"
 	@echo "... source/function.s"
+	@echo "... source/mass.o"
+	@echo "... source/mass.i"
+	@echo "... source/mass.s"
 .PHONY : help
 
 

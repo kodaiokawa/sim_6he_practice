@@ -122,27 +122,24 @@ int Beam::judge_interact(double particle[], string datafile)
 }
 
 //http://lambda.phys.tohoku.ac.jp/~miwa9/monte_carlo/kinematics.pdf
-double Beam::scatter(int reaction, double particle[5], double particle1[7], double particle2[7])
+double Beam::elastic_scatter(int reaction, double particle[], double particle1[], double particle2[])
 {
-    const double to_deg = 180.0 / M_PI;
-    const double to_rad = M_PI / 180.0;
-
     double M1, M2, M3, M4;
 
     if(reaction == 1){
-        M1 = M3 = MASS::MASS_6HE;
-        M2 = M4 = MASS::MASS_p;
+        M1 = M3 = MASS::MASS_MAIN_BEAM;
+        M2 = M4 = MASS::MASS_MAIN_TARGET;
     }else if(reaction == 2){
-        M1 = M3 = MASS::MASS_6HE;
-        M2 = M4 = MASS::MASS_12C;
+        M1 = M3 = MASS::MASS_MAIN_BEAM;
+        M2 = M4 = MASS::MASS_SUB_TARGET;
     }else if(reaction == 3){
-        M1 = M3 = MASS::MASS_3H;
-        M2 = M4 = MASS::MASS_p;
+        M1 = M3 = MASS::MASS_SUB_BEAM;
+        M2 = M4 = MASS::MASS_MAIN_TARGET;
     }else if(reaction == 4){
-        M1 = M3 = MASS::MASS_3H;
-        M2 = M4 = MASS::MASS_12C;
+        M1 = M3 = MASS::MASS_SUB_BEAM;
+        M2 = M4 = MASS::MASS_SUB_TARGET;
     }else{
-        cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
+        cout << "ERROR : reaction problem (incorrect reaction_flag) : "<< reaction << endl;
         exit(1);
     }
 
@@ -173,13 +170,13 @@ double Beam::scatter(int reaction, double particle[5], double particle1[7], doub
         exit(1);
     }
 
-    double E3 = gamma * E3_CM + beta * gamma * p_CM * cos(Theta * to_rad);
-    double E4 = gamma * E4_CM - beta * gamma * p_CM * cos(Theta * to_rad);
-    double p3 = sqrt((gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
-    double p4 = sqrt((gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
+    double E3 = gamma * E3_CM + beta * gamma * p_CM * cos(Theta * STANDARD::TO_RAD);
+    double E4 = gamma * E4_CM - beta * gamma * p_CM * cos(Theta * STANDARD::TO_RAD);
+    double p3 = sqrt((gamma * beta * E3_CM + gamma * p_CM * cos(Theta * STANDARD::TO_RAD))*(gamma * beta * E3_CM + gamma * p_CM * cos(Theta * STANDARD::TO_RAD)) + p_CM * p_CM * sin(Theta * STANDARD::TO_RAD) * sin(Theta * STANDARD::TO_RAD));
+    double p4 = sqrt((gamma * beta * E4_CM - gamma * p_CM * cos(Theta * STANDARD::TO_RAD))*(gamma * beta * E4_CM - gamma * p_CM * cos(Theta * STANDARD::TO_RAD)) + p_CM * p_CM * sin(Theta * STANDARD::TO_RAD) * sin(Theta * STANDARD::TO_RAD));
 
-    double theta = to_deg * asin((p_CM*sin(Theta * to_rad))/p3);
-    double phi = to_deg * asin((p_CM*sin(Theta * to_rad))/p4);
+    double theta = STANDARD::TO_DEG * asin((p_CM*sin(Theta * STANDARD::TO_RAD))/p3);
+    double phi = STANDARD::TO_DEG * asin((p_CM*sin(Theta * STANDARD::TO_RAD))/p4);
 
     if(reaction == 1){
         particle1[0] = 11.0;

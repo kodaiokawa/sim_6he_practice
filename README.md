@@ -23,7 +23,7 @@ prepareing...
 ## Problems
 1. The position (depth) where the particle stops in the sample is assumed to be uniform
 2. I don't consider beam bending (deflection?) in the target
-
+3. Initial energy of the beam (MeV/u) is fixed (but it is possible to give fluctuation in main.cpp)
 
 ## Usage
 (I don't know it is necessary) please delete the default /build directory (in order to adopt the environment of the PC?)
