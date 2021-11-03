@@ -145,10 +145,10 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
     }
 
     double Theta = generate_cm_angle_elastic(); // degree
-    double E1; // MeV 実験室系のエネルギー
+    double E1; // MeV Lab system 
     if(reaction == 1 || reaction == 2){ E1 = particle[1]*6.0 + M1; }
     else if(reaction == 3 || reaction == 4){ E1 = particle[1]*3.0 + M1; }
-    double E2 = 0.0 + M2; // MeV 実験室系のエネルギー
+    double E2 = 0.0 + M2; // MeV Lab system
     double p1 = sqrt((E1)*(E1)-(M1)*(M1));
     double p2 = sqrt((E2)*(E2)-(M2)*(M2));
 
@@ -209,12 +209,13 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
 }
 
 //(*** from lise++ value ***)
+//THIS FUNCTION GAS PROBLEMS
 int Beam::leave_target(double particle[7]){
     int frag = 1;
     double del_z = thickness/2.0 - particle[4];
-    double distance = del_z / cos(particle[5] * M_PI / 180.0);
-    particle[2] += distance * sin(particle[5] * M_PI / 180.0) * cos(particle[6] * M_PI / 180.0);
-    particle[3] += distance * sin(particle[5] * M_PI / 180.0) * sin(particle[6] * M_PI / 180.0);
+    double distance = del_z / cos(particle[5] * to_rad);
+    particle[2] += distance * sin(particle[5] * to_rad) * cos(particle[6] * to_rad);
+    particle[3] += distance * sin(particle[5] * to_rad) * sin(particle[6] * to_rad);
     particle[4] += del_z; 
 
     double energy_loss, energy_straggling;
@@ -243,16 +244,16 @@ int Beam::leave_target(double particle[7]){
 int Beam::judge_detector(double particle[7])
 {
     int frag=0;
-    double u = sin(particle[5] * M_PI / 180.0) * cos(particle[6] * M_PI / 180.0);
-    double v = sin(particle[5] * M_PI / 180.0) * sin(particle[6] * M_PI / 180.0);
-    double w = cos(particle[5] * M_PI / 180.0);
+    double u = sin(particle[5] * to_rad) * cos(particle[6] * to_rad);
+    double v = sin(particle[5] * to_rad) * sin(particle[6] * to_rad);
+    double w = cos(particle[5] * to_rad);
 
-    double conv_x = particle[4]*sin(-strip_ang * M_PI / 180.0) + particle[2]*cos(-strip_ang * M_PI / 180.0);
+    double conv_x = particle[4]*sin(-strip_ang * to_rad) + particle[2]*cos(-strip_ang * to_rad);
     double conv_y = particle[3];
-    double conv_z = particle[4]*cos(-strip_ang * M_PI / 180.0) - particle[2]*sin(-strip_ang * M_PI / 180.0);
-    double conv_u = w*sin(-strip_ang * M_PI / 180.0) + u*cos(-strip_ang * M_PI / 180.0);
+    double conv_z = particle[4]*cos(-strip_ang * to_rad) - particle[2]*sin(-strip_ang * to_rad);
+    double conv_u = w*sin(-strip_ang * to_rad) + u*cos(-strip_ang * to_rad);
     double conv_v = v;
-    double conv_w = w*cos(-strip_ang * M_PI / 180.0) - u*sin(-strip_ang * M_PI / 180.0);
+    double conv_w = w*cos(-strip_ang * to_rad) - u*sin(-strip_ang * to_rad);
     
     double factor = (R - conv_z) / conv_w;
     conv_x += factor*conv_u;

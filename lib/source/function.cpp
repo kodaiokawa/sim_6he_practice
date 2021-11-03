@@ -46,19 +46,19 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
     if(reaction == 1){
         mass_projectile = main_beam->mass;
         mass_target = main_target->mass;
-        E1 = energy*6.0 + mass_projectile;
+        E1 = energy*main_beam->num + mass_projectile;
     }else if(reaction == 2){
         mass_projectile = main_beam->mass;
         mass_target = sub_target->mass;
-        E1 = energy*6.0 + mass_projectile;
+        E1 = energy*main_beam->num + mass_projectile;
     }else if(reaction == 3){
         mass_projectile = sub_beam->mass;
         mass_target = main_target->mass;
-        E1 = energy*3.0 + mass_projectile;
+        E1 = energy*sub_beam->num + mass_projectile;
     }else if(reaction == 4){
         mass_projectile = sub_beam->mass;
         mass_target = sub_target->mass;
-        E1 = energy*3.0 + mass_projectile;
+        E1 = energy*sub_beam->num + mass_projectile;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
@@ -81,22 +81,22 @@ double elastic_cross_section(double energy, int reaction) //cm2
     double value = 0.0;
     double factor = ((alpha_const * hbar_c * 1.0e-13) / (4.0*E) )*((alpha_const *  hbar_c * 1.0e-13) / (4.0*E) );
     if(reaction == 1){
-        factor *= (2.0 * 1.0) * (2.0 * 1.0);
+        factor *= pow(main_beam->num_z + main_target->num_z, 2.0);
     }else if(reaction == 2){
-        factor *= (2.0 * 6.0) * (2.0 * 6.0);
+        factor *= pow(main_beam->num_z + sub_target->num_z, 2.0);
     }else if(reaction == 3){
-        factor *= (1.0 * 1.0) * (1.0 * 1.0);
+        factor *= pow(sub_beam->num_z + main_target->num_z, 2.0);
     }else if(reaction == 4){
-        factor *= (1.0 * 6.0) * (1.0 * 6.0);
+        factor *= pow(sub_beam->num_z + sub_target->num_z, 2.0);
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
     }
 
     double del_angle = 0.1;
-    double del_rad_angle = del_angle * M_PI / 180.0;
+    double del_rad_angle = del_angle * to_rad;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * M_PI / 180.0;
+        double rad_angle = angle * to_rad;
         value += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
     }
     value *= factor * 2.0 * M_PI;
@@ -109,9 +109,9 @@ double generate_cm_angle_elastic()
     double norm = 0.0;
 
     double del_angle = 0.1;
-    double del_rad_angle = del_angle * M_PI / 180.0;
+    double del_rad_angle = del_angle * to_rad;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * M_PI / 180.0;
+        double rad_angle = angle * to_rad;
         norm += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
     }
 
@@ -119,7 +119,7 @@ double generate_cm_angle_elastic()
     double tmp = 0.0;
     double cm_angle;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * M_PI / 180.0;
+        double rad_angle = angle * to_rad;
         tmp += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle / norm;
         if(tmp > uni){
             cm_angle = angle;
