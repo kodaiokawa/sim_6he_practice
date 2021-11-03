@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -107,43 +108,41 @@ int main( int argc, char **argv )
         
         beam_test->reation_loc_target(particle);
 
-        switch(reaction_flag){
-        case 10: // inelastic scattering
-          break;
+        scat_energy = particle[1];
+        scat_x = particle[2];
+        scat_y = particle[3];
+        scat_z = particle[4];
 
-        default: // elastic scattering
+        cm_ang = beam_test->scatter(reaction_flag, particle, particle1, particle2, datafile_cs);
+        part1_theta = particle1[5];
+        part1_phi = particle1[6];
+        part2_theta = particle2[5];
+        part2_phi = particle2[6];
+        part1_energy = particle1[1];
+        part2_energy = particle2[1];
 
-          scat_energy = particle[1];
-          scat_x = particle[2];
-          scat_y = particle[3];
-          scat_z = particle[4];
-
-          double ang = beam_test->elastic_scatter(reaction_flag, particle, particle1, particle2);
-          cm_ang = ang;
-          part1_theta = particle1[5];
-          part1_phi = particle1[6];
-          part2_theta = particle2[5];
-          part2_phi = particle2[6];
-          part1_energy = particle1[1];
-          part2_energy = particle2[1];
-
-          int flag1, flag2;
-          flag1 = beam_test->leave_target(particle1);
-          if(flag1 == 1){
-            part1_det_energy = particle1[1];
-            int flag1_detector;
-            flag1_detector = beam_test->judge_detector(particle1);
-            if(flag1_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle1[1])); }
+        int flag1 = beam_test->leave_target(particle1);
+        if(flag1 == 1){
+          int flag1_detector = beam_test->judge_detector(particle1);
+          if(flag1_detector == 1){
+            double ene = beam_test->energy_detector(particle1[1]);
+            h_strip->Fill(ene);
+            part1_det_energy = ene;
           }
-          flag2 = beam_test->leave_target(particle2);
-          if(flag2 == 1){
-            part2_det_energy = particle2[1];
-            int flag2_detector;
-            flag2_detector = beam_test->judge_detector(particle2);
-            if(flag2_detector == 1){ h_strip->Fill(beam_test->energy_detector(particle2[1])); }
+        }
+
+        int flag2 = beam_test->leave_target(particle2);
+        if(flag2 == 1){
+          int flag2_detector = beam_test->judge_detector(particle2);
+          if(flag2_detector == 1){
+            double ene = beam_test->energy_detector(particle2[1]);
+            h_strip->Fill(ene);
+            part2_det_energy = ene;
           }
+        }
+
+        if(part1_det_energy > 0 || part2_det_energy > 0){
           tree->Fill();
-          break;
         }
     }
 

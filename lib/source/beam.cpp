@@ -122,8 +122,7 @@ int Beam::judge_interact(double particle[], string datafile)
     }
 }
 
-//http://lambda.phys.tohoku.ac.jp/~miwa9/monte_carlo/kinematics.pdf
-double Beam::elastic_scatter(int reaction, double particle[], double particle1[], double particle2[])
+double Beam::scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile)
 {
     double M1, M2, M3, M4;
 
@@ -139,15 +138,22 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
     }else if(reaction == 4){
         M1 = M3 = sub_beam->mass;
         M2 = M4 = sub_target->mass;
+    }else if(reaction == 10){
+        M1 = main_beam->mass;
+        M2 = main_target->mass;
+        M3 = out_beam->mass;
+        M4 = out_target->mass;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag) : "<< reaction << endl;
         exit(1);
     }
 
-    double Theta = generate_cm_angle_elastic(); // degree
+    double Theta;
+    if(reaction == 10) { Theta = generate_cm_angle_list(datafile); }
+    else{ Theta = generate_cm_angle_elastic(); } // degree
     double E1; // MeV Lab system 
-    if(reaction == 1 || reaction == 2){ E1 = particle[1]*6.0 + M1; }
-    else if(reaction == 3 || reaction == 4){ E1 = particle[1]*3.0 + M1; }
+    if(reaction == 1 || reaction == 2){ E1 = particle[1]*main_beam->num + M1; }
+    else if(reaction == 3 || reaction == 4){ E1 = particle[1]*sub_beam->num + M1; }
     double E2 = 0.0 + M2; // MeV Lab system
     double p1 = sqrt((E1)*(E1)-(M1)*(M1));
     double p2 = sqrt((E2)*(E2)-(M2)*(M2));
@@ -191,7 +197,10 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
     }else if(reaction == 4){
         particle1[0] = 12.0;
         particle2[0] = 14.0;
-    }
+    }else if(reaction == 10){
+        particle1[0] = 15.0;
+        particle2[0] = 16.0;
+    } 
     particle1[1] = E3 - M3;
     particle2[1] = E4 - M4; //MeV (not MeV/u)
     particle1[2] = particle[2];
@@ -203,14 +212,15 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
     particle1[5] = theta;
     particle2[5] = phi;
     particle1[6] = 360.0*generate_standard();
-    particle2[6] = particle1[6] - 180.0;  
+    if(particle1[6] > 180.0) { particle2[6] = particle1[6] - 180.0; }
+    else{particle2[6] = particle1[6] + 180.0; }  
 
     return Theta;
 }
 
 //(*** from lise++ value ***)
 //THIS FUNCTION GAS PROBLEMS
-int Beam::leave_target(double particle[7]){
+int Beam::leave_target(double particle[]){
     int frag = 1;
     double del_z = thickness/2.0 - particle[4];
     double distance = del_z / cos(particle[5] * to_rad);
@@ -219,10 +229,10 @@ int Beam::leave_target(double particle[7]){
     particle[4] += del_z; 
 
     double energy_loss, energy_straggling;
-    if((int)particle[0] == 11){
+    if((int)particle[0] == 11 || (int)particle[0] == 15){
         energy_loss = 1.2 * distance*1.0e+4 / 50.0;
         energy_straggling = generate_normal(0.0, 0.0059 * (distance * 1.0e+4) / 50.0) * 6.0;
-    }else if((int)particle[0] == 12){
+    }else if((int)particle[0] == 12 || (int)particle[0] == 16){
         energy_loss = 0.3 * distance*1.0e+4 / 50.0;
         energy_straggling = generate_normal(0.0, 0.00586 * (distance * 1.0e+4) / 50.0) * 3.0;
     }else if((int)particle[0] == 13){
@@ -241,7 +251,7 @@ int Beam::leave_target(double particle[7]){
     return frag;
 }
 
-int Beam::judge_detector(double particle[7])
+int Beam::judge_detector(double particle[])
 {
     int frag=0;
     double u = sin(particle[5] * to_rad) * cos(particle[6] * to_rad);

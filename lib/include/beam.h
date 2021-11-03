@@ -18,12 +18,12 @@ class Beam
         void reation_loc_target(double particle[]);
         int judge_interact(double particle[], string datafile);
 
-        double elastic_scatter(int reaction, double particle[], double particle1[], double particle2[]);
+        double scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile);
 
         //it is proto type
-        int leave_target(double particle[7]);
+        int leave_target(double particle[]);
 
-        int judge_detector(double particle[7]);
+        int judge_detector(double particle[]);
         double energy_detector(double energy);
 };
 

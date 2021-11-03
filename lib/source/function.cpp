@@ -151,7 +151,7 @@ double list_cross_section(string datafile) //cm2
 }
 
 
-double generate_cm_ange_list(string datafile)
+double generate_cm_angle_list(string datafile)
 {
   ifstream fdata(datafile);
   if(!fdata){
