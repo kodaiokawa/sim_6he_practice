@@ -1,5 +1,6 @@
 #include "../include/beam.h"
 #include "../include/function.h"
+#include "../include/mass.h"
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -127,17 +128,17 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
     double M1, M2, M3, M4;
 
     if(reaction == 1){
-        M1 = M3 = MASS::MASS_MAIN_BEAM;
-        M2 = M4 = MASS::MASS_MAIN_TARGET;
+        M1 = M3 = main_beam->mass;
+        M2 = M4 = main_target->mass;
     }else if(reaction == 2){
-        M1 = M3 = MASS::MASS_MAIN_BEAM;
-        M2 = M4 = MASS::MASS_SUB_TARGET;
+        M1 = M3 = main_beam->mass;
+        M2 = M4 = sub_target->mass;
     }else if(reaction == 3){
-        M1 = M3 = MASS::MASS_SUB_BEAM;
-        M2 = M4 = MASS::MASS_MAIN_TARGET;
+        M1 = M3 = sub_beam->mass;
+        M2 = M4 = main_target->mass;
     }else if(reaction == 4){
-        M1 = M3 = MASS::MASS_SUB_BEAM;
-        M2 = M4 = MASS::MASS_SUB_TARGET;
+        M1 = M3 = sub_beam->mass;
+        M2 = M4 = sub_target->mass;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag) : "<< reaction << endl;
         exit(1);
@@ -170,13 +171,13 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
         exit(1);
     }
 
-    double E3 = gamma * E3_CM + beta * gamma * p_CM * cos(Theta * STANDARD::TO_RAD);
-    double E4 = gamma * E4_CM - beta * gamma * p_CM * cos(Theta * STANDARD::TO_RAD);
-    double p3 = sqrt((gamma * beta * E3_CM + gamma * p_CM * cos(Theta * STANDARD::TO_RAD))*(gamma * beta * E3_CM + gamma * p_CM * cos(Theta * STANDARD::TO_RAD)) + p_CM * p_CM * sin(Theta * STANDARD::TO_RAD) * sin(Theta * STANDARD::TO_RAD));
-    double p4 = sqrt((gamma * beta * E4_CM - gamma * p_CM * cos(Theta * STANDARD::TO_RAD))*(gamma * beta * E4_CM - gamma * p_CM * cos(Theta * STANDARD::TO_RAD)) + p_CM * p_CM * sin(Theta * STANDARD::TO_RAD) * sin(Theta * STANDARD::TO_RAD));
+    double E3 = gamma * E3_CM + beta * gamma * p_CM * cos(Theta * to_rad);
+    double E4 = gamma * E4_CM - beta * gamma * p_CM * cos(Theta * to_rad);
+    double p3 = sqrt((gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E3_CM + gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
+    double p4 = sqrt((gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad))*(gamma * beta * E4_CM - gamma * p_CM * cos(Theta * to_rad)) + p_CM * p_CM * sin(Theta * to_rad) * sin(Theta * to_rad));
 
-    double theta = STANDARD::TO_DEG * asin((p_CM*sin(Theta * STANDARD::TO_RAD))/p3);
-    double phi = STANDARD::TO_DEG * asin((p_CM*sin(Theta * STANDARD::TO_RAD))/p4);
+    double theta = to_deg * asin((p_CM*sin(Theta * to_rad))/p3);
+    double phi = to_deg * asin((p_CM*sin(Theta * to_rad))/p4);
 
     if(reaction == 1){
         particle1[0] = 11.0;
@@ -192,7 +193,7 @@ double Beam::elastic_scatter(int reaction, double particle[], double particle1[]
         particle2[0] = 14.0;
     }
     particle1[1] = E3 - M3;
-    particle2[1] = E4 - M4; //MeV (x MeV/u)
+    particle2[1] = E4 - M4; //MeV (not MeV/u)
     particle1[2] = particle[2];
     particle2[2] = particle[2];
     particle1[3] = particle[3];

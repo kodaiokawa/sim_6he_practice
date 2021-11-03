@@ -1,4 +1,5 @@
 #include"../include/function.h"
+#include"../include/mass.h"
 #include <iostream>
 #include <random>
 #include <fstream>
@@ -8,34 +9,16 @@
 
 using namespace std;
 
-const double STANDARD::HBAR_C = 197.327; //MeV fm
-const double STANDARD::ALPHA = 1.0 / 137.036;
-const double STANDARD::TO_RAD = M_PI / 180.0;
-const double STANDARD::TO_DEG = 180.0 / M_PI;
 
-//unit of mass : MeV/c2
-const double MASS::MASS_6HE[0] = 6018885.889 * 1.0e-6 * 931.494013;
-const double MASS::MASS_6HE[1] = 6.0;
-const double MASS::MASS_3H[0] = 3016049.28132 * 1.0e-6 * 931.494013;
-const double MASS::MASS_3H[1] = 3.0;
-const double MASS::MASS_p[0] = 1007825.031898 * 1.0e-6 * 931.494013;
-const double MASS::MASS_p[1] = 1.0;
-const double MASS::MASS_12C[0] = 12000000.0 * 1.0e-6 * 931.494013;
-const double MASS::MASS_12C[1] = 12.0;
-const double MASS::MASS_d[0] = 2014101.777844 * 1.0e-6 * 931.494013;
-const double MASS::MASS_d[1] = 2.0;
-const double MASS::MASS_MAIN_BEAM[0] = MASS::MASS_6HE[0];
-const double MASS::MASS_MAIN_BEAM[1] = MASS::MASS_6HE[1];
-const double MASS::MASS_SUB_BEAM[0] = MASS::MASS_3H[0];
-const double MASS::MASS_SUB_BEAM[1] = MASS::MASS_3H[1];
-const double MASS::MASS_MAIN_TARGET[0] = MASS::MASS_d[0];
-const double MASS::MASS_MAIN_TARGET[1] = MASS::MASS_d[1];
-const double MASS::MASS_SUB_TARGET[0] = MASS::MASS_12C[0];
-const double MASS::MASS_SUB_TARGET[1] = MASS::MASS_12C[1];
+const double hbar_c = 197.327; //MeV fm
+const double alpha_const = 1.0 / 137.036;
+const double to_rad = M_PI / 180.0;
+const double to_deg = 180.0 / M_PI;
+
 
 void test() 
 {
-    cout << "This is a sample." << endl;
+    cout << "This is a test function." << endl;
 }
 
 double generate_standard() 
@@ -61,20 +44,20 @@ double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3
     double mass_target;
     double E1;
     if(reaction == 1){
-        mass_projectile = MASS::MASS_MAIN_BEAM[0];
-        mass_target = MASS::MASS_MAIN_TARGET[0];
+        mass_projectile = main_beam->mass;
+        mass_target = main_target->mass;
         E1 = energy*6.0 + mass_projectile;
     }else if(reaction == 2){
-        mass_projectile = MASS::MASS_MAIN_BEAM[0];
-        mass_target = MASS::MASS_SUB_TARGET[0];
+        mass_projectile = main_beam->mass;
+        mass_target = sub_target->mass;
         E1 = energy*6.0 + mass_projectile;
     }else if(reaction == 3){
-        mass_projectile = MASS::MASS_SUB_BEAM[0];
-        mass_target = MASS::MASS_MAIN_TARGET[0];
+        mass_projectile = sub_beam->mass;
+        mass_target = main_target->mass;
         E1 = energy*3.0 + mass_projectile;
     }else if(reaction == 4){
-        mass_projectile = MASS::MASS_SUB_BEAM[0];
-        mass_target = MASS::MASS_SUB_TARGET[0];
+        mass_projectile = sub_beam->mass;
+        mass_target = sub_target->mass;
         E1 = energy*3.0 + mass_projectile;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
@@ -96,7 +79,7 @@ double elastic_cross_section(double energy, int reaction) //cm2
 {
     double E = cm_energy(energy, reaction);
     double value = 0.0;
-    double factor = ((STANDARD::ALPHA*STANDARD::HBAR_C*1.0e-13) / (4.0*E) )*((STANDARD::ALPHA*STANDARD::HBAR_C*1.0e-13) / (4.0*E) );
+    double factor = ((alpha_const * hbar_c * 1.0e-13) / (4.0*E) )*((alpha_const *  hbar_c * 1.0e-13) / (4.0*E) );
     if(reaction == 1){
         factor *= (2.0 * 1.0) * (2.0 * 1.0);
     }else if(reaction == 2){
@@ -162,7 +145,7 @@ double list_cross_section(string datafile) //cm2
   double width = 180.0/num;
   double ang, dif_cs;
   while(fdata >> ang >> dif_cs){
-    all_cs += dif_cs * width * STANDARD::TO_RAD;
+    all_cs += dif_cs * width * to_rad;
   }
   return all_cs * 2.0 * M_PI * 1.0e-27;
 }

@@ -1,5 +1,6 @@
 #include <function.h>
 #include <beam.h>
+#include <mass.h>
 #include <TH1.h>
 #include <TTree.h>
 #include <TFile.h>

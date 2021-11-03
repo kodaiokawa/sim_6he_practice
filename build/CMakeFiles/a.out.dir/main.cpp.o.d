@@ -1,6 +1,6 @@
-lib/CMakeFiles/refer.dir/source/function.cpp.o: \
-  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/source/function.cpp \
-  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/source/../include/function.h \
+CMakeFiles/a.out.dir/main.cpp.o: \
+  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/main.cpp \
+  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/./include/function.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/pthread.h \
@@ -170,15 +170,105 @@ lib/CMakeFiles/refer.dir/source/function.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/_types/_wctrans_t.h \
-  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/source/../include/mass.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/iostream \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/ios \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__locale \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/mutex \
+  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/./include/beam.h \
+  /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/./include/mass.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TH1.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAxis.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TNamed.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TObject.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Rtypes.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RtypesCore.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RConfig.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/../RVersion.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RConfigure.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/AvailabilityMacros.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/TargetConditionals.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/DllImport.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/strtok.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/strlcpy.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/snprintf.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TGenericClassInfo.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TSchemaHelper.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/vector \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bit_reference \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__split_buffer \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TIsAProxy.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualIsAProxy.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TStorage.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVersionCheck.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RVersion.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TString.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TMathBase.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cmath \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/math.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/math.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RStringView.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TypeTraits.hxx \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cstdarg \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttAxis.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayD.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArray.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttLine.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttFill.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttMarker.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayC.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayS.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayI.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayF.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Foption.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/EExecutionPolicy.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVectorFfwd.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVectorDfwd.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TFitResultPtr.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cfloat \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/float.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/float.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/float.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TTree.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Compression.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TIOFeatures.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TClass.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDictionary.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ESTLType.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TObjArray.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TSeqCollection.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TCollection.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TIterator.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualRWMutex.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualMutex.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/map \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__tree \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__node_handle \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/optional \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/unordered_set \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__hash_table \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDataType.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDirectory.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TUUID.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TList.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBuffer.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Bytes.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualTreePlayer.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBranch.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBranchCacheInfo.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBits.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/array \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TFile.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDirectoryFile.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDatime.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TUrl.h \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RConcurrentHashColl.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TRWSpinLock.hxx \
+  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TSpinMutex.hxx \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/condition_variable \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__mutex_base \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/system_error \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__errc \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cerrno \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/mutex \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/iostream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/ios \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__locale \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/locale.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/locale.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/_locale.h \
@@ -225,14 +315,6 @@ lib/CMakeFiles/refer.dir/source/function.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/bitset \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bit_reference \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/random \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cmath \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/math.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/math.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/numeric \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/vector \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/fstream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/stack \
