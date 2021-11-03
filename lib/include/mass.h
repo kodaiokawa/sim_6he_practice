@@ -14,5 +14,7 @@ extern Mass *main_beam;
 extern Mass *main_target;
 extern Mass *sub_beam;
 extern Mass *sub_target;
+extern Mass *out_beam;
+extern Mass *out_target;
 
 
