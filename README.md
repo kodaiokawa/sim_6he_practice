@@ -55,3 +55,4 @@ preparering...
 
 ## Reference
 * [MASS OF NUCLEI](http://amdc.impcas.ac.cn/index.html)
+* [kinematics (in Japanese)](http://lambda.phys.tohoku.ac.jp/~miwa9/monte_carlo/kinematics.pdf)
