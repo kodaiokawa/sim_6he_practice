@@ -7,6 +7,7 @@ The inelastic scattering you want to study can be calculated simultaneously with
 Please note that some of the calculations are still not working.
 
 ## Assumption
+![setup](https://github.com/kodaiokawa/sim_6he_practice/blob/develop_okawa/figure/setup.png)
 * I assume that the size of Si detector is 5.0 cm x 5.0 cm and it has 16 strips in X and Y axis
 * The beam and the center axis of the detector are aligned
 * The program can consider two particle beam and two particle target if the cross section data is available
