@@ -30,6 +30,7 @@ int main( int argc, char **argv )
     double scat_x, scat_y, scat_z, scat_energy;
     double cm_ang, part1_theta, part1_phi, part2_theta, part2_phi;
     double part1_energy, part1_det_energy, part2_energy, part2_det_energy;
+    int part1_strip_x, part1_strip_y, part2_strip_x, part2_strip_y;
 
     TTree *tree = new TTree("tree", "scattering test");
     tree->Branch("ini_particle", &ini_particle, "ini_particle/I");
@@ -49,8 +50,12 @@ int main( int argc, char **argv )
     tree->Branch("part2_phi", &part2_phi, "part2_phi/D");
     tree->Branch("part1_energy", &part1_energy, "part1_energy/D");
     tree->Branch("part1_det_energy", &part1_det_energy, "part1_det_energy/D");
+    tree->Branch("part1_strip_x", &part1_strip_x, "part1_strip_x/I");
+    tree->Branch("part1_strip_y", &part1_strip_y, "part1_strip_y/I");
     tree->Branch("part2_energy", &part2_energy, "part2_energy/D");
     tree->Branch("part2_det_energy", &part2_det_energy, "part2_det_energy/D");
+    tree->Branch("part2_strip_x", &part2_strip_x, "part2_strip_x/I");
+    tree->Branch("part2_strip_y", &part2_strip_y, "part2_strip_y/I");
 
 
 
@@ -73,6 +78,8 @@ int main( int argc, char **argv )
     TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
 
 
+    cout << "simulartion start ... " << endl;
+    int count = 0;
     for(int loop=0; loop<beam_test->get_ini_num(); loop++){
         ini_particle = -9999;
         ini_x=-9999.0, ini_y=-9999.0, ini_z=-9999.0, ini_energy=-9999.0;
@@ -80,9 +87,14 @@ int main( int argc, char **argv )
         scat_x=-9999.0, scat_y=-9999.0, scat_z=-9999.0, scat_energy=-9999.0;
         cm_ang=-9999.0, part1_theta=-9999.0, part1_phi=-9999.0, part2_theta=-9999.0, part2_phi=-9999.0;
         part1_energy=-9999.0, part1_det_energy=-9999.0, part2_energy=-9999.0, part2_det_energy=-9999.0;
+        part1_strip_x=-9999, part1_strip_y=-9999, part2_strip_x=-9999, part2_strip_y=-9999;
 
-        if((loop+1)%10==0){
-            cout << "\r" << "proceeding... " << 100.0 * (double)(loop+1)/(double)beam_test->get_ini_num() << " %" << string(20, ' ');
+
+       // if((loop+1)%10==0){
+       //     cout << "\r" << "proceeding... " << 100.0 * (double)(loop+1)/(double)beam_test->get_ini_num() << " %" << string(20, ' ');
+       // }
+        if( (loop+1) % (int)(beam_test->get_ini_num()/100.0) == 0){
+            cout << loop+1 << " / " << beam_test->get_ini_num() << endl;
         }
 
         beam_test->generate_beam(particle);
@@ -123,28 +135,37 @@ int main( int argc, char **argv )
 
         int flag1 = beam_test->leave_target(particle1);
         if(flag1 == 1){
-          int flag1_detector = beam_test->judge_detector(particle1);
-          if(flag1_detector == 1){
+          int tmp[2] = {0, 0};
+          int flag1_detector = beam_test->judge_detector(particle1, tmp);
+          if(flag1_detector > 0){
             double ene = beam_test->energy_detector(particle1[1]);
             h_strip->Fill(ene);
             part1_det_energy = ene;
+            part1_strip_x = tmp[0];
+            part1_strip_y = tmp[1];
           }
         }
 
         int flag2 = beam_test->leave_target(particle2);
         if(flag2 == 1){
-          int flag2_detector = beam_test->judge_detector(particle2);
-          if(flag2_detector == 1){
+          int tmp[2] = {0, 0};
+          int flag2_detector = beam_test->judge_detector(particle2, tmp);
+          if(flag2_detector > 0){
             double ene = beam_test->energy_detector(particle2[1]);
             h_strip->Fill(ene);
             part2_det_energy = ene;
+            part2_strip_x = tmp[0];
+            part2_strip_y = tmp[1];
           }
         }
 
         if(part1_det_energy > 0 || part2_det_energy > 0){
           tree->Fill();
+          count += 1;
         }
     }
+    cout << endl;
+    cout << "Number of hits : " << count << " / " << beam_test->get_ini_num() << endl;
 
     TString ofn = "../simulation.root";
     TFile *fout = new TFile(ofn, "recreate");

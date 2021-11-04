@@ -15,6 +15,6 @@ Mass *main_beam = &he6;
 Mass *main_target = &d;
 Mass *sub_beam = &h3;
 Mass *sub_target = &c12;
-Mass *out_beam = &n;
-Mass *out_target = &li7;
+Mass *out_beam = &li7;
+Mass *out_target = &n;
 

@@ -57,6 +57,13 @@ void Beam::print_cond()
     cout << "energy resolution : " << detector_sigma << " MeV" << endl;
     cout << "*****************************" << endl;
     cout << endl;
+    cout << "Main beam   (A, Z) = " << "(" << main_beam->num << ", " << main_beam->num_z << ")" << endl;
+    cout << "Sub beam    (A, Z) = " << "(" << sub_beam->num << ", " << sub_beam->num_z << ")" << endl;
+    cout << "Main target (A, Z) = " << "(" << main_target->num << ", " << main_target->num_z << ")" << endl;
+    cout << "Sub beam    (A, Z) = " << "(" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
+    cout << endl;
+    cout << "Main reaction : " << "(" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ") -> (" << out_beam->num << ", " << out_beam->num_z << ") + (" << out_target->num << ", " << out_target->num_z <<")" << endl;
+    cout << endl;
 }
 
 int Beam::get_ini_num()
@@ -75,7 +82,7 @@ void Beam::generate_beam(double particle[])
     particle[4] = -thickness/2.0;
 } 
 
-//Specify the position in the target if the reaction occured, and store the value considering the energy loss (from lise++ value)
+//(from lise++ value)
 //THIS FUNCTION HAS PROBLEM
 void Beam::reation_loc_target(double particle[])
 {
@@ -83,11 +90,11 @@ void Beam::reation_loc_target(double particle[])
     particle[4] += stop_length;
     double energy_loss;
     double energy_straggling;
-    if(particle[0] > 0.0){ //in case of 6he beam
+    if(particle[0] > 0.0){ //in case of main beam
         energy_loss = 0.02278 * (stop_length * 1.0e+4);
         energy_straggling = generate_normal(0.0, 0.0059 * (stop_length * 1.0e+4) / 50.0);
         particle[1] -= energy_loss/6.0 + energy_straggling;
-    }else{ //in case of 3h beam
+    }else{ //in case of sub beam
         energy_loss = 0.00566 * (stop_length * 1.0e+4);
         energy_straggling = generate_normal(0.0, 0.00585 * (stop_length * 1.0e+4) / 50.0);
         particle[1] -= energy_loss/3.0 + energy_straggling;
@@ -221,7 +228,7 @@ double Beam::scatter(int reaction, double particle[], double particle1[], double
 //(*** from lise++ value ***)
 //THIS FUNCTION GAS PROBLEMS
 int Beam::leave_target(double particle[]){
-    int frag = 1;
+    int flag = 1;
     double del_z = thickness/2.0 - particle[4];
     double distance = del_z / cos(particle[5] * to_rad);
     particle[2] += distance * sin(particle[5] * to_rad) * cos(particle[6] * to_rad);
@@ -247,13 +254,14 @@ int Beam::leave_target(double particle[]){
     }
     particle[1] -= energy_loss + energy_straggling;
 
-    if(particle[1] < 0){ frag = 0; }
-    return frag;
+    if(particle[1] < 0){ flag = 0; }
+    return flag;
 }
 
-int Beam::judge_detector(double particle[])
+int Beam::judge_detector(double particle[], int tmp[])
 {
-    int frag=0;
+    int flag=0;
+    //unit vector (u, v, w)
     double u = sin(particle[5] * to_rad) * cos(particle[6] * to_rad);
     double v = sin(particle[5] * to_rad) * sin(particle[6] * to_rad);
     double w = cos(particle[5] * to_rad);
@@ -268,8 +276,12 @@ int Beam::judge_detector(double particle[])
     double factor = (R - conv_z) / conv_w;
     conv_x += factor*conv_u;
     conv_y += factor*conv_v;
-    if(abs(conv_x) < strip_x && abs(conv_y) < strip_y){ frag = 1; }
-    return frag;
+    if(abs(conv_x) < strip_x && abs(conv_y) < strip_y){ flag = 1; }
+
+    tmp[0] = 0;
+    tmp[1] = 0;
+
+    return flag;
 }
 
 double Beam::energy_detector(double energy)

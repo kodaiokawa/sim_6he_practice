@@ -15,15 +15,11 @@ class Beam
         void print_cond();
         int get_ini_num();
         void generate_beam(double particle[]);
-        void reation_loc_target(double particle[]);
+        void reation_loc_target(double particle[]); //problem
         int judge_interact(double particle[], string datafile);
-
         double scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile);
-
-        //it is proto type
-        int leave_target(double particle[]);
-
-        int judge_detector(double particle[]);
+        int leave_target(double particle[]); //problem
+        int judge_detector(double particle[], int tmp[]);
         double energy_detector(double energy);
 };
 
