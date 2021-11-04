@@ -1,5 +1,6 @@
 # sim_6he_practice
 (simulation practice of 6he experiment as my first project)
+
 This program performs Monte Carlo simulations of two-body nuclear reactions. Elastic scattering is calculated by considering the main beam and up to one background beam as the incident beam and the main component and up to one background component as the target.
 The inelastic scattering you want to study can be calculated simultaneously with the elastic scattering by entering the angular dependence of the reaction cross section of the CM system in the file.
 
@@ -42,7 +43,7 @@ cmake ..
 ```
 if you get some error, I think it is necessary to edit the CMakeLists.txt or the installation of cmake(root) is not working.
 
-#### Change the parameter
+### Change the parameter
 In this program, you should edit three files to change the parameter
 * ./condition/input.txt
 * ./lib/source/mass.cpp
