@@ -44,19 +44,22 @@ cmake ..
 if you get some error, I think it is necessary to edit the CMakeLists.txt or the installation of cmake(root) is not working.
 
 ### Change the parameter
-In this program, you should edit three files to change the parameter
+In this program, you should edit four files to change the parameter
 * ./condition/input.txt
 * ./lib/source/mass.cpp
 * ./database/cross_section/-----.txt
+* ./main.cpp
 
-In input.txt, you can change the experiment parameters.
-And mass.cpp, you can input information of beam and target particle.
-lastly, -----.txt, you should make textfile of the cross section of the inelastic scattering from other reference.
+In **input.txt**, you can change the experiment parameters.
+And **mass.cpp**, you can input information of beam and target particle.
+lastly, **-----.txt**, you should make textfile of the cross section of the inelastic scattering from other reference. 
+After that, the name of created textfile is needed to write in **main.cpp**.
+
 In the current version, the calculation of energy loss is ambiguous.
-So, the ./database/energyloss directory is not used in this version.
+So, the **./database/energyloss** directory is not used in this version.
 
 
-When you changed the parameter, type below command in the ./build directory
+When you changed the parameter, type below command in the **./build** directory
 ``` console
 make
 ```
@@ -64,8 +67,8 @@ after that, I think the **a.out** file is created (in MacOS case?), so the progr
 ```console
 ./a.out
 ```
-if you have some error, please check that the directory is ./build when the command is typed.
-After that, ./simulation.root is created, so you can use it to analyse.
+if you have some error, please check that the directory is **./build** when the command is typed.
+After that, **./simulation.root** is created, so you can use it to analyse.
 
 ## Root file
 preparering...
