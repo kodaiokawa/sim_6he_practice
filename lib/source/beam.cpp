@@ -63,7 +63,14 @@ void Beam::print_cond()
     cout << "Main target (A, Z) = " << "(" << main_target->num << ", " << main_target->num_z << ")" << endl;
     cout << "Sub beam    (A, Z) = " << "(" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
     cout << endl;
-    cout << "Main reaction : " << "(" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ") -> (" << out_beam->num << ", " << out_beam->num_z << ") + (" << out_target->num << ", " << out_target->num_z <<")" << endl;
+    cout << "Elastic scattering" << endl;
+    cout << "1: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ")" << endl;
+    cout << "2: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
+    cout << "3: (" << sub_beam->num << ", " << sub_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ")" << endl;
+    cout << "4: (" << sub_beam->num << ", " << sub_beam->num_z << ") + (" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
+    cout << endl;
+    cout << "Main reaction" << endl;
+    cout << "10: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ") -> (" << out_beam->num << ", " << out_beam->num_z << ") + (" << out_target->num << ", " << out_target->num_z <<")" << endl;
     cout << endl;
 }
 

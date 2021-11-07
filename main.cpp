@@ -76,10 +76,17 @@ int main( int argc, char **argv )
     //particle[4]: location_z
     double particle[5], particle1[7], particle2[7];
     TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
+    TH1F *h_all_ang = new TH1F( "h_all_ang", "", 100, 0., 180.0 );
+    TH1F *h_det_ang = new TH1F( "h_det_ang", "", 100, 0., 180.0 );
 
 
     cout << "simulartion start ... " << endl;
     int count = 0;
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    int count4 = 0;
+    int count10 = 0;
     for(int loop=0; loop<beam_test->get_ini_num(); loop++){
         ini_particle = -9999;
         ini_x=-9999.0, ini_y=-9999.0, ini_z=-9999.0, ini_energy=-9999.0;
@@ -90,9 +97,6 @@ int main( int argc, char **argv )
         part1_strip_x=-9999, part1_strip_y=-9999, part2_strip_x=-9999, part2_strip_y=-9999;
 
 
-       // if((loop+1)%10==0){
-       //     cout << "\r" << "proceeding... " << 100.0 * (double)(loop+1)/(double)beam_test->get_ini_num() << " %" << string(20, ' ');
-       // }
         if( (loop+1) % (int)(beam_test->get_ini_num()/100.0) == 0){
             cout << loop+1 << " / " << beam_test->get_ini_num() << endl;
         }
@@ -114,9 +118,13 @@ int main( int argc, char **argv )
         //flag_reac=4 : elastic sub beam + sub target
         //flag_reac=10 : inelastic scattering (reaction of interest)
         if(reaction_flag == 0){
-            //tree->Fill();
             continue;
         }
+        if(reaction_flag == 1){ count1 += 1; }
+        else if(reaction_flag == 2){ count2 += 1; }
+        else if(reaction_flag == 3){ count3 += 1; }
+        else if(reaction_flag == 4){ count4 += 1; }
+        else if(reaction_flag == 10){ count10 += 1; }
         
         beam_test->reation_loc_target(particle);
 
@@ -132,6 +140,7 @@ int main( int argc, char **argv )
         part2_phi = particle2[6];
         part1_energy = particle1[1];
         part2_energy = particle2[1];
+        h_all_ang->Fill(cm_ang);
 
         int flag1 = beam_test->leave_target(particle1);
         if(flag1 == 1){
@@ -161,16 +170,27 @@ int main( int argc, char **argv )
 
         if(part1_det_energy > 0 || part2_det_energy > 0){
           tree->Fill();
+          h_det_ang->Fill(cm_ang);
           count += 1;
         }
     }
     cout << endl;
-    cout << "Number of hits : " << count << " / " << beam_test->get_ini_num() << endl;
+    cout << "occured reaction" << endl;
+    cout << "reaction 1  : " << count1 << endl;
+    cout << "reaction 2  : " << count2 << endl;
+    cout << "reaction 3  : " << count3 << endl;
+    cout << "reaction 4  : " << count4 << endl;
+    cout << "reaction 10 : " << count10 << endl;
+    cout << "TOTAL       : " << count1 + count2 + count3 + count4 + count10 << endl;
+    cout << endl;
+    cout << "Number of detector hits : " << count << " / " << beam_test->get_ini_num() << endl;
 
     TString ofn = "../simulation.root";
     TFile *fout = new TFile(ofn, "recreate");
     tree->Write();
     h_strip->Write();
+    h_all_ang->Write();
+    h_det_ang->Write();
     fout->Close();
 
     cout << endl;
