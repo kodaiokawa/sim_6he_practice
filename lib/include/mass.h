@@ -17,4 +17,3 @@ extern Mass *sub_target;
 extern Mass *out_beam;
 extern Mass *out_target;
 
-

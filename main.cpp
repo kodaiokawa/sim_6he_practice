@@ -13,6 +13,7 @@
 
 using namespace std;
 
+
 int main( int argc, char **argv )
 {
     //prepare datafile
@@ -57,6 +58,9 @@ int main( int argc, char **argv )
     tree->Branch("part2_strip_x", &part2_strip_x, "part2_strip_x/I");
     tree->Branch("part2_strip_y", &part2_strip_y, "part2_strip_y/I");
 
+    TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
+    TH1F *h_all_ang = new TH1F( "h_all_ang", "", 100, 0., 180.0 );
+    TH1F *h_det_ang = new TH1F( "h_det_ang", "", 100, 0., 180.0 );
 
 
     //generate beam
@@ -66,21 +70,9 @@ int main( int argc, char **argv )
     beam_test->print_cond();
 
 
-    //Put the initial particle information into the particle[]
-    //the particle after reaction is particle1[] and particle2[]
-    
-    //particle[0]: particle type >6he <3H
-    //particle[1]: particle energy
-    //particle[2]: location_x (cm)
-    //particle[3]: location_y
-    //particle[4]: location_z
-    double particle[5], particle1[7], particle2[7];
-    TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
-    TH1F *h_all_ang = new TH1F( "h_all_ang", "", 100, 0., 180.0 );
-    TH1F *h_det_ang = new TH1F( "h_det_ang", "", 100, 0., 180.0 );
 
 
-    cout << "simulartion start ... " << endl;
+    cout << "simulation start ... " << endl;
     int count = 0;
     int count1 = 0;
     int count2 = 0;
@@ -100,6 +92,18 @@ int main( int argc, char **argv )
         if( (loop+1) % (int)(beam_test->get_ini_num()/100.0) == 0){
             cout << loop+1 << " / " << beam_test->get_ini_num() << endl;
         }
+
+        //Put the initial particle information into the particle[]
+        //the particle after the reaction is particle1[] and particle2[]
+
+        //particle[0]: particle type (1:main beam, -1:sub beam)
+        //particle[1]: particle energy (MeV/u)
+        //particle[2]: location_x (cm)
+        //particle[3]: location_y
+        //particle[4]: location_z
+        double particle[5] = {};
+        double particle1[7] = {};
+        double particle2[7] = {};
 
         beam_test->generate_beam(particle);
         if(particle[0] > 0.0){ ini_particle = 0;}
@@ -134,12 +138,12 @@ int main( int argc, char **argv )
         scat_z = particle[4];
 
         cm_ang = beam_test->scatter(reaction_flag, particle, particle1, particle2, datafile_cs);
+        part1_energy = particle1[1];
+        part2_energy = particle2[1];
         part1_theta = particle1[5];
         part1_phi = particle1[6];
         part2_theta = particle2[5];
         part2_phi = particle2[6];
-        part1_energy = particle1[1];
-        part2_energy = particle2[1];
         h_all_ang->Fill(cm_ang);
 
         int flag1 = beam_test->leave_target(particle1);
@@ -195,7 +199,7 @@ int main( int argc, char **argv )
 
     cout << endl;
     cout << endl;
-    cout << "<Created> ./simulation.root" << endl;
+    cout << "<CREATED> ./simulation.root" << endl;
     cout << "...simulation completed!" << endl;
     return 0;
 }
