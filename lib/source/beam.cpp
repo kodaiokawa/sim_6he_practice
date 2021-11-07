@@ -289,10 +289,10 @@ void Beam::judge_detector(double particle[], int tmp[])
     tmp[0] = 0;
     tmp[1] = 0;
     for(int i=1; i<17; i++){
-      if(-strip_x*8.0 + strip_x*(i-1.0) < conv_x && -strip_x*8.0 + strip_x*i > conv_x){
+      if(-strip_x*8.0 + strip_x*(i-1.0) < conv_y && -strip_x*8.0 + strip_x*i > conv_y){
         tmp[0] = 17 - i;
       }
-      if(-strip_y*8.0 + strip_y*(i-1.0) < conv_y && -strip_y*8.0 + strip_y*i > conv_y){
+      if(-strip_y*8.0 + strip_y*(i-1.0) < conv_x && -strip_y*8.0 + strip_y*i > conv_x){
         tmp[1] = 17 - i;
       }
     }

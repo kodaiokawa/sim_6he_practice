@@ -172,94 +172,94 @@ CMakeFiles/a.out.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/_types/_wctrans_t.h \
   /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/./include/beam.h \
   /Users/okawa/work/crib/simulation/6he/sim_6he_practice/lib/./include/mass.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TH1.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAxis.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TNamed.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TObject.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Rtypes.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RtypesCore.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RConfig.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/../RVersion.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RConfigure.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TH1.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TAxis.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TNamed.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TObject.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/Rtypes.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/RtypesCore.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/RConfig.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/../RVersion.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/RConfigure.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/AvailabilityMacros.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/TargetConditionals.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/DllImport.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/strtok.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/strlcpy.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/snprintf.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TGenericClassInfo.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TSchemaHelper.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/DllImport.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/strtok.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/strlcpy.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/snprintf.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TGenericClassInfo.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TSchemaHelper.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/vector \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bit_reference \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__split_buffer \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TIsAProxy.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualIsAProxy.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TStorage.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVersionCheck.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/RVersion.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TString.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TMathBase.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TIsAProxy.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVirtualIsAProxy.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TStorage.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVersionCheck.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/RVersion.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TString.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TMathBase.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/math.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/math.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RStringView.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TypeTraits.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/RStringView.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/TypeTraits.hxx \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cstdarg \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttAxis.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayD.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArray.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttLine.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttFill.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TAttMarker.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayC.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayS.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayI.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TArrayF.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Foption.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/EExecutionPolicy.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVectorFfwd.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVectorDfwd.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TFitResultPtr.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TAttAxis.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArrayD.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArray.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TAttLine.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TAttFill.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TAttMarker.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArrayC.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArrayS.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArrayI.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TArrayF.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/Foption.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/EExecutionPolicy.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVectorFfwd.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVectorDfwd.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TFitResultPtr.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cfloat \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/float.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/float.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TTree.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Compression.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TIOFeatures.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TClass.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDictionary.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ESTLType.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TObjArray.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TSeqCollection.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TCollection.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TIterator.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualRWMutex.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualMutex.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TTree.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/Compression.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/TIOFeatures.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TClass.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TDictionary.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ESTLType.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TObjArray.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TSeqCollection.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TCollection.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TIterator.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVirtualRWMutex.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVirtualMutex.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__tree \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__node_handle \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/optional \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/unordered_set \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__hash_table \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDataType.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDirectory.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TUUID.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TList.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBuffer.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/Bytes.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TVirtualTreePlayer.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBranch.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBranchCacheInfo.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TBits.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TDataType.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TDirectory.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TUUID.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TList.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TBuffer.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/Bytes.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TVirtualTreePlayer.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TBranch.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TBranchCacheInfo.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TBits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/array \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TFile.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDirectoryFile.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TDatime.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/TUrl.h \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/RConcurrentHashColl.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TRWSpinLock.hxx \
-  /opt/homebrew/Cellar/root/6.24.04_1/include/root/ROOT/TSpinMutex.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TFile.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TDirectoryFile.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TDatime.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/TUrl.h \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/RConcurrentHashColl.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/TRWSpinLock.hxx \
+  /opt/homebrew/Cellar/root/6.24.06/include/root/ROOT/TSpinMutex.hxx \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/condition_variable \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__mutex_base \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/system_error \
