@@ -1,10 +1,13 @@
-***** write experimental condition *****
-100.0  //測定時間(s)
-1.5e+6  //全体のビーム強度(pps)
-0.7  //6Heの純度
-5.0  //targetの厚さ(mg/cm2)
-6.44e+20  //targetの密度(atoms/cm2)
-5.0  //一つのストリップの大きさ（鉛直方向）(cm)
-0.3125  //一つのストリップの大きさ（水平方向）(cm)
-17.0  //検出器の角度(位置)(deg)
-8.0 //粒子のエネルギー(MeV/u)
+****** example of the experimental condition ******
+100.0     //mesurement time (s)
+1.5e+6    //intensity of the beam (pps)
+0.7       //purity of the beam (in this case 6He)
+5.0       //thickness of the target (um)
+0.66      //purity of the target particle (in this case p)
+6.44e+20  //density of the target (atoms/cm2)
+0.3125       //the length of the Si strip (vertical) (cm)
+0.3125    //the length of the Si strip (horizontal) (cm)
+17.0      //angle (position) of the center of the detector (deg)
+8.0       //energy of the initial particle (MeV/u)
+15.0      //the distance between the center of target and the center of detector (cm)
+0.5       //energy resolution of Si detector (MeV)

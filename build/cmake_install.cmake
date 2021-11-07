@@ -1,4 +1,4 @@
-# Install script for directory: /Users/okawa/work/crib/lise++/6He/pre-analysis/simulation
+# Install script for directory: /Users/okawa/work/crib/simulation/6he/sim_6he_practice
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build/lib/cmake_install.cmake")
+  include("/Users/okawa/work/crib/simulation/6he/sim_6he_practice/build/lib/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/okawa/work/crib/lise++/6He/pre-analysis/simulation/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/okawa/work/crib/simulation/6he/sim_6he_practice/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -8,7 +8,8 @@ project(lise_lib
 
 add_library(refer STATIC 
     ./source/function.cpp
-    ./source/beam.cpp)
+    ./source/beam.cpp
+    ./source/mass.cpp)
 
 target_link_libraries(refer ROOT::Core ROOT::Gpad ROOT::Graf3d ROOT::Graf
   ROOT::Hist ROOT::Imt ROOT::MathCore ROOT::Matrix ROOT::MultiProc ROOT::Net

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/refer.dir/source/beam.cpp.o.d"
   "CMakeFiles/refer.dir/source/function.cpp.o"
   "CMakeFiles/refer.dir/source/function.cpp.o.d"
+  "CMakeFiles/refer.dir/source/mass.cpp.o"
+  "CMakeFiles/refer.dir/source/mass.cpp.o.d"
   "librefer.a"
   "librefer.pdb"
 )
