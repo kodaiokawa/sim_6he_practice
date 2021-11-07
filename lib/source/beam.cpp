@@ -51,6 +51,7 @@ void Beam::print_cond()
     cout << "purity of main target : " << target_purity * 100.0 << " %" << endl;
     cout << "target density : " << density << " atoms/cm2" << endl;
     cout << "size of strip : " << strip_x << " x " << strip_y << " cm2" << endl;
+    cout << "size of whole detector : " << strip_x *16.0 << " x " << strip_y *16.0<< " cm2" << endl;
     cout << "detector angle : " << strip_ang << " deg" << endl;
     cout << "particle energy : " << particle_energy << " MeV/u" << endl;
     cout << "distance between detector and target : " << R << " cm" << endl;
@@ -122,6 +123,7 @@ int Beam::judge_interact(double particle[], string datafile)
     }else{ //in case of another beam (3H)
         double ratio_reaction3 = elastic_cross_section(particle[1], 3) * density * target_purity;
         double ratio_reaction4 = elastic_cross_section(particle[1], 4) * density * (1.0 - target_purity);
+
         double judge = generate_standard();
         if(judge < ratio_reaction3){ return 3; }
         else if(judge < ratio_reaction3 + ratio_reaction4){ return 4; }
@@ -258,30 +260,35 @@ int Beam::leave_target(double particle[]){
     return flag;
 }
 
-int Beam::judge_detector(double particle[], int tmp[])
+void Beam::judge_detector(double particle[], int tmp[])
 {
-    int flag=0;
-    //unit vector (u, v, w)
+    //unit direction vector (u, v, w)
     double u = sin(particle[5] * to_rad) * cos(particle[6] * to_rad);
     double v = sin(particle[5] * to_rad) * sin(particle[6] * to_rad);
     double w = cos(particle[5] * to_rad);
 
-    double conv_x = particle[4]*sin(-strip_ang * to_rad) + particle[2]*cos(-strip_ang * to_rad);
-    double conv_y = particle[3];
-    double conv_z = particle[4]*cos(-strip_ang * to_rad) - particle[2]*sin(-strip_ang * to_rad);
-    double conv_u = w*sin(-strip_ang * to_rad) + u*cos(-strip_ang * to_rad);
-    double conv_v = v;
-    double conv_w = w*cos(-strip_ang * to_rad) - u*sin(-strip_ang * to_rad);
-    
+    double conv_x = particle[2];
+    double conv_y = particle[3]*cos(-strip_ang * to_rad) - particle[4]*sin(-strip_ang * to_rad);
+    double conv_z = particle[3]*sin(-strip_ang * to_rad) + particle[4]*cos(-strip_ang * to_rad);
+
+    double conv_u = u;
+    double conv_v = v*cos(-strip_ang * to_rad) - w*sin(-strip_ang * to_rad);
+    double conv_w = v*sin(-strip_ang * to_rad) + w*cos(-strip_ang * to_rad);
+
     double factor = (R - conv_z) / conv_w;
     conv_x += factor*conv_u;
     conv_y += factor*conv_v;
-    if(abs(conv_x) < strip_x && abs(conv_y) < strip_y){ flag = 1; }
 
     tmp[0] = 0;
     tmp[1] = 0;
-
-    return flag;
+    for(int i=1; i<17; i++){
+      if(-strip_x*8.0 + strip_x*(i-1.0) < conv_x && -strip_x*8.0 + strip_x*i){
+        tmp[0] = 17 - i;
+      }
+      if(-strip_y*8.0 + strip_y*(i-1.0) < conv_y && -strip_y*8.0 + strip_y*i){
+        tmp[1] = 17 - i;
+      }
+    }
 }
 
 double Beam::energy_detector(double energy)

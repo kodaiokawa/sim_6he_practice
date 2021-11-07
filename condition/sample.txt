@@ -5,7 +5,7 @@
 5.0       //thickness of the target (um)
 0.66      //purity of the target particle (in this case p)
 6.44e+20  //density of the target (atoms/cm2)
-5.0       //the length of the Si strip (vertical) (cm)
+0.3125       //the length of the Si strip (vertical) (cm)
 0.3125    //the length of the Si strip (horizontal) (cm)
 17.0      //angle (position) of the center of the detector (deg)
 8.0       //energy of the initial particle (MeV/u)

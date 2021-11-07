@@ -14,6 +14,7 @@ const double hbar_c = 197.327; //MeV fm
 const double alpha_const = 1.0 / 137.036;
 const double to_rad = M_PI / 180.0;
 const double to_deg = 180.0 / M_PI;
+const double c_const = 299792458; // m/s
 
 
 void test() 
@@ -38,41 +39,34 @@ double generate_normal(double mu, double sigma) //Box–Muller's method
     return value*sigma + mu;
 }
 
-double cm_energy(double energy, int reaction) //particle 1=6He+p, 2=6He+12C, 3=3H+p, 4=3H+12C
+double cm_energy(double energy, int reaction)
 {
-    double mass_projectile;
+    double mass_beam;
     double mass_target;
     double E1;
     if(reaction == 1){
-        mass_projectile = main_beam->mass;
+        mass_beam = main_beam->mass;
         mass_target = main_target->mass;
-        E1 = energy*main_beam->num + mass_projectile;
+        E1 = energy*main_beam->num;
     }else if(reaction == 2){
-        mass_projectile = main_beam->mass;
+        mass_beam = main_beam->mass;
         mass_target = sub_target->mass;
-        E1 = energy*main_beam->num + mass_projectile;
+        E1 = energy*main_beam->num;
     }else if(reaction == 3){
-        mass_projectile = sub_beam->mass;
+        mass_beam = sub_beam->mass;
         mass_target = main_target->mass;
-        E1 = energy*sub_beam->num + mass_projectile;
+        E1 = energy*sub_beam->num;
     }else if(reaction == 4){
-        mass_projectile = sub_beam->mass;
+        mass_beam = sub_beam->mass;
         mass_target = sub_target->mass;
-        E1 = energy*sub_beam->num + mass_projectile;
+        E1 = energy*sub_beam->num;
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
     }
 
-    double E2 = 0.0 + mass_target; // MeV energy in LAB system
-    double p1 = sqrt((E1)*(E1)-(mass_projectile)*(mass_projectile));
-    double p2 = sqrt((E2)*(E2)-(mass_target)*(mass_target));
-    double beta = (p1 + p2)/(E1 + E2);
-    double gamma = 1.0/sqrt(1.0 - beta * beta);
-    double E1_CM = gamma * E1 - beta * gamma * p1;
-    double E2_CM = gamma * E2 - beta * gamma * p2;
-
-    return (E1_CM + E2_CM) - (mass_projectile + mass_target);
+    //return sqrt((mass_beam + mass_target)*(mass_beam + mass_target) + 2.0*mass_target*E1) - (mass_beam + mass_target);
+    return (mass_target * E1) / (mass_beam + mass_target);
 }
 
 double elastic_cross_section(double energy, int reaction) //cm2
@@ -81,13 +75,13 @@ double elastic_cross_section(double energy, int reaction) //cm2
     double value = 0.0;
     double factor = ((alpha_const * hbar_c * 1.0e-13) / (4.0*E) )*((alpha_const *  hbar_c * 1.0e-13) / (4.0*E) );
     if(reaction == 1){
-        factor *= pow(main_beam->num_z + main_target->num_z, 2.0);
+        factor *= pow(main_beam->num_z * main_target->num_z, 2.0);
     }else if(reaction == 2){
-        factor *= pow(main_beam->num_z + sub_target->num_z, 2.0);
+        factor *= pow(main_beam->num_z * sub_target->num_z, 2.0);
     }else if(reaction == 3){
-        factor *= pow(sub_beam->num_z + main_target->num_z, 2.0);
+        factor *= pow(sub_beam->num_z * main_target->num_z, 2.0);
     }else if(reaction == 4){
-        factor *= pow(sub_beam->num_z + sub_target->num_z, 2.0);
+        factor *= pow(sub_beam->num_z * sub_target->num_z, 2.0);
     }else{
         cout << "ERROR : reaction problem (incorrect reaction_flag)" << endl;
         exit(1);
@@ -120,7 +114,7 @@ double generate_cm_angle_elastic()
     double cm_angle;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
         double rad_angle = angle * to_rad;
-        tmp += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle / norm;
+        tmp += (1.0/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle / norm;
         if(tmp > uni){
             cm_angle = angle;
             break;
@@ -145,7 +139,7 @@ double list_cross_section(string datafile) //cm2
   double width = 180.0/num;
   double ang, dif_cs;
   while(fdata >> ang >> dif_cs){
-    all_cs += dif_cs * width * to_rad;
+    all_cs += dif_cs * sin(ang * to_rad) * width * to_rad;
   }
   return all_cs * 2.0 * M_PI * 1.0e-27;
 }

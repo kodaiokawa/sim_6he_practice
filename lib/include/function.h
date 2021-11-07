@@ -9,6 +9,7 @@ extern const double hbar_c;
 extern const double alpha_const;
 extern const double to_rad;
 extern const double to_deg;
+extern const double c_const;
 
 void test();
 

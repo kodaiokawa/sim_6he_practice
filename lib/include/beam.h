@@ -19,7 +19,7 @@ class Beam
         int judge_interact(double particle[], string datafile);
         double scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile);
         int leave_target(double particle[]); //problem
-        int judge_detector(double particle[], int tmp[]);
+        void judge_detector(double particle[], int tmp[]);
         double energy_detector(double energy);
 };
 

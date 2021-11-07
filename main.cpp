@@ -136,8 +136,8 @@ int main( int argc, char **argv )
         int flag1 = beam_test->leave_target(particle1);
         if(flag1 == 1){
           int tmp[2] = {0, 0};
-          int flag1_detector = beam_test->judge_detector(particle1, tmp);
-          if(flag1_detector > 0){
+          beam_test->judge_detector(particle1, tmp);
+          if(tmp[0] > 0){
             double ene = beam_test->energy_detector(particle1[1]);
             h_strip->Fill(ene);
             part1_det_energy = ene;
@@ -149,8 +149,8 @@ int main( int argc, char **argv )
         int flag2 = beam_test->leave_target(particle2);
         if(flag2 == 1){
           int tmp[2] = {0, 0};
-          int flag2_detector = beam_test->judge_detector(particle2, tmp);
-          if(flag2_detector > 0){
+          beam_test->judge_detector(particle2, tmp);
+          if(tmp[0] > 0){
             double ene = beam_test->energy_detector(particle2[1]);
             h_strip->Fill(ene);
             part2_det_energy = ene;
