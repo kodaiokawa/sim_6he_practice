@@ -39,6 +39,31 @@ double generate_normal(double mu, double sigma) //Box–Muller's method
     return value*sigma + mu;
 }
 
+int initial_com_line(int argc, char **argv)
+{
+    if(argc != 2){
+      cout << "USAGE: prease enter 1 or 2" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      cout << "EXAMPLE" << endl;
+      cout << ">> ./a.out 1" << endl;
+      exit(1);
+    }
+    if(strcmp(argv[1], "1") == 0){
+      cout << argv[1] << " : include elastic scattering"  << endl;
+      return 1;
+    }else if(strcmp(argv[1], "2") == 0){
+      cout << argv[1] << " : ignore elastic scattering" << endl;
+      return 2;
+    }else{
+      cout << "ERROR : incorrect command" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      exit(1);
+    }
+}
+
+
 double cm_energy(double energy, int reaction)
 {
     double mass_beam;

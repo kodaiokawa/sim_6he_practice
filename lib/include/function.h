@@ -15,6 +15,7 @@ void test();
 
 double generate_standard();
 double generate_normal(double mu, double sigma);
+int initial_com_line(int argc, char **argv);
 double cm_energy(double energy, int reaction);
 double elastic_cross_section(double energy, int reaction); //cm2
 double generate_cm_angle_elastic();

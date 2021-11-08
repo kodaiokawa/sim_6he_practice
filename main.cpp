@@ -17,27 +17,7 @@ using namespace std;
 int main( int argc, char **argv )
 {
     //setup the command line argument
-    int mode;
-    if(argc != 2){
-      cout << "USAGE: prease enter 1 or 2" << endl;
-      cout << "1 : include elastic scattering" << endl;
-      cout << "2 ; ignore elastic scattering" << endl;
-      cout << "EXAMPLE" << endl;
-      cout << ">> ./a.out 1" << endl;
-      exit(1);
-    }
-    if(strcmp(argv[1], "1") == 0){
-      cout << argv[1] << " : include elastic scattering"  << endl;
-      mode = 1;
-    }else if(strcmp(argv[1], "2") == 0){
-      cout << argv[1] << " : ignore elastic scattering" << endl;
-      mode = 2;
-    }else{
-      cout << "ERROR : incorrect command" << endl;
-      cout << "1 : include elastic scattering" << endl;
-      cout << "2 ; ignore elastic scattering" << endl;
-      exit(1);
-    }
+    int mode = initial_com_line(argc, argv);
     cout << endl;
 
 
