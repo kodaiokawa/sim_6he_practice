@@ -16,6 +16,31 @@ using namespace std;
 
 int main( int argc, char **argv )
 {
+    //setup the command line argument
+    int mode;
+    if(argc != 2){
+      cout << "USAGE: prease enter 1 or 2" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      cout << "EXAMPLE" << endl;
+      cout << ">> ./a.out 1" << endl;
+      exit(1);
+    }
+    if(strcmp(argv[1], "1") == 0){
+      cout << argv[1] << " : include elastic scattering"  << endl;
+      mode = 1;
+    }else if(strcmp(argv[1], "2") == 0){
+      cout << argv[1] << " : ignore elastic scattering" << endl;
+      mode = 2;
+    }else{
+      cout << "ERROR : incorrect command" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      exit(1);
+    }
+    cout << endl;
+
+
     //prepare datafile
     string datafile_cs("../database/cross_section/cs_6he_d_Ecm10MeV.txt");
     cout << "...reading " << datafile_cs << endl;
@@ -113,7 +138,10 @@ int main( int argc, char **argv )
         ini_y = particle[3];
         ini_z = particle[4];
 
-        int reaction_flag = beam_test->judge_interact(particle, datafile_cs);
+
+        int reaction_flag;
+        if(mode == 1){ reaction_flag = beam_test->judge_interact(particle, datafile_cs); }
+        else{ reaction_flag = beam_test->judge_interact_ignore(particle, datafile_cs); }
         flag_reac = reaction_flag;
         //flag_reac=0 : no reaction
         //flag_reac=1 : elastic main beam + main target
@@ -121,9 +149,8 @@ int main( int argc, char **argv )
         //flag_reac=3 : elastic sub beam + main target
         //flag_reac=4 : elastic sub beam + sub target
         //flag_reac=10 : inelastic scattering (reaction of interest)
-        if(reaction_flag == 0){
-            continue;
-        }
+        if(reaction_flag == 0){ continue; }
+
         if(reaction_flag == 1){ count1 += 1; }
         else if(reaction_flag == 2){ count2 += 1; }
         else if(reaction_flag == 3){ count3 += 1; }

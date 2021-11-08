@@ -138,6 +138,24 @@ int Beam::judge_interact(double particle[], string datafile)
     }
 }
 
+
+int Beam::judge_interact_ignore(double particle[], string datafile)
+{
+    if(particle[0] > 0){ //in case of main beam (6He)
+        double ratio_main_reaction;
+
+        ifstream fdata(datafile);
+        if(!fdata){
+          ratio_main_reaction = 0.0;
+        }else{ ratio_main_reaction = list_cross_section(datafile) * density * target_purity; }
+
+        double judge = generate_standard();
+        if(judge < ratio_main_reaction){ return 10; }
+        else { return 0; }
+    }else{ return 0; }
+}
+
+
 double Beam::scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile)
 {
     double M1, M2, M3, M4;
