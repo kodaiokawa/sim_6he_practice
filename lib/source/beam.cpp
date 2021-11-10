@@ -63,7 +63,14 @@ void Beam::print_cond()
     cout << "Main target (A, Z) = " << "(" << main_target->num << ", " << main_target->num_z << ")" << endl;
     cout << "Sub beam    (A, Z) = " << "(" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
     cout << endl;
-    cout << "Main reaction : " << "(" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ") -> (" << out_beam->num << ", " << out_beam->num_z << ") + (" << out_target->num << ", " << out_target->num_z <<")" << endl;
+    cout << "Elastic scattering" << endl;
+    cout << "1: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ")" << endl;
+    cout << "2: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
+    cout << "3: (" << sub_beam->num << ", " << sub_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ")" << endl;
+    cout << "4: (" << sub_beam->num << ", " << sub_beam->num_z << ") + (" << sub_target->num << ", " << sub_target->num_z << ")" << endl;
+    cout << endl;
+    cout << "Main reaction" << endl;
+    cout << "10: (" << main_beam->num << ", " << main_beam->num_z << ") + (" << main_target->num << ", " << main_target->num_z << ") -> (" << out_beam->num << ", " << out_beam->num_z << ") + (" << out_target->num << ", " << out_target->num_z <<")" << endl;
     cout << endl;
 }
 
@@ -130,6 +137,24 @@ int Beam::judge_interact(double particle[], string datafile)
         else { return 0; }
     }
 }
+
+
+int Beam::judge_interact_ignore(double particle[], string datafile)
+{
+    if(particle[0] > 0){ //in case of main beam (6He)
+        double ratio_main_reaction;
+
+        ifstream fdata(datafile);
+        if(!fdata){
+          ratio_main_reaction = 0.0;
+        }else{ ratio_main_reaction = list_cross_section(datafile) * density * target_purity; }
+
+        double judge = generate_standard();
+        if(judge < ratio_main_reaction){ return 10; }
+        else { return 0; }
+    }else{ return 0; }
+}
+
 
 double Beam::scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile)
 {
@@ -282,10 +307,10 @@ void Beam::judge_detector(double particle[], int tmp[])
     tmp[0] = 0;
     tmp[1] = 0;
     for(int i=1; i<17; i++){
-      if(-strip_x*8.0 + strip_x*(i-1.0) < conv_x && -strip_x*8.0 + strip_x*i){
+      if(-strip_x*8.0 + strip_x*(i-1.0) < conv_y && -strip_x*8.0 + strip_x*i > conv_y){
         tmp[0] = 17 - i;
       }
-      if(-strip_y*8.0 + strip_y*(i-1.0) < conv_y && -strip_y*8.0 + strip_y*i){
+      if(-strip_y*8.0 + strip_y*(i-1.0) < conv_x && -strip_y*8.0 + strip_y*i > conv_x){
         tmp[1] = 17 - i;
       }
     }

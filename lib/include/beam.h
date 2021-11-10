@@ -17,6 +17,7 @@ class Beam
         void generate_beam(double particle[]);
         void reation_loc_target(double particle[]); //problem
         int judge_interact(double particle[], string datafile);
+        int judge_interact_ignore(double particle[], string datafile);
         double scatter(int reaction, double particle[], double particle1[], double particle2[], string datafile);
         int leave_target(double particle[]); //problem
         void judge_detector(double particle[], int tmp[]);

@@ -10,7 +10,7 @@ Mass d = {2014101.777844 * 1.0e-6 * 931.494013, 2.0, 1.0};
 Mass n = {1008664.91590 * 1.0e-6 * 931.494013, 1.0, 0.0};
 Mass li7 = {7016003.43426 * 1.0e-6 * 931.494013, 7.0, 3.0};
 
-
+//fill in the particles
 Mass *main_beam = &he6;
 Mass *main_target = &d;
 Mass *sub_beam = &h3;

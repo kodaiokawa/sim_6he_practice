@@ -39,6 +39,31 @@ double generate_normal(double mu, double sigma) //Box–Muller's method
     return value*sigma + mu;
 }
 
+int initial_com_line(int argc, char **argv)
+{
+    if(argc != 2){
+      cout << "USAGE: prease enter 1 or 2" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      cout << "EXAMPLE" << endl;
+      cout << ">> ./a.out 1" << endl;
+      exit(1);
+    }
+    if(strcmp(argv[1], "1") == 0){
+      cout << argv[1] << " : include elastic scattering"  << endl;
+      return 1;
+    }else if(strcmp(argv[1], "2") == 0){
+      cout << argv[1] << " : ignore elastic scattering" << endl;
+      return 2;
+    }else{
+      cout << "ERROR : incorrect command" << endl;
+      cout << "1 : include elastic scattering" << endl;
+      cout << "2 ; ignore elastic scattering" << endl;
+      exit(1);
+    }
+}
+
+
 double cm_energy(double energy, int reaction)
 {
     double mass_beam;
@@ -65,8 +90,8 @@ double cm_energy(double energy, int reaction)
         exit(1);
     }
 
-    //return sqrt((mass_beam + mass_target)*(mass_beam + mass_target) + 2.0*mass_target*E1) - (mass_beam + mass_target);
-    return (mass_target * E1) / (mass_beam + mass_target);
+    return sqrt((mass_beam + mass_target)*(mass_beam + mass_target) + 2.0*mass_target*E1) - (mass_beam + mass_target);
+    //return (mass_target * E1) / (mass_beam + mass_target); //non-relativistic
 }
 
 double elastic_cross_section(double energy, int reaction) //cm2
@@ -88,10 +113,8 @@ double elastic_cross_section(double energy, int reaction) //cm2
     }
 
     double del_angle = 0.1;
-    double del_rad_angle = del_angle * to_rad;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * to_rad;
-        value += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
+        value += (sin(angle * to_rad)/pow(sin(angle * to_rad / 2.0), 4.0)) * (del_angle * to_rad);
     }
     value *= factor * 2.0 * M_PI;
     return value;
@@ -103,18 +126,15 @@ double generate_cm_angle_elastic()
     double norm = 0.0;
 
     double del_angle = 0.1;
-    double del_rad_angle = del_angle * to_rad;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * to_rad;
-        norm += (sin(rad_angle)/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle;
+        norm += (sin(angle * to_rad)/pow(sin(angle * to_rad/2.0), 4.0)) * (del_angle * to_rad);
     }
 
     double uni = generate_standard();
     double tmp = 0.0;
     double cm_angle;
     for(double angle=1.0; angle<180.0; angle+=del_angle){
-        double rad_angle = angle * to_rad;
-        tmp += (1.0/pow(sin(rad_angle/2.0), 4.0)) * del_rad_angle / norm;
+        tmp += (sin(angle * to_rad)/pow(sin(angle * to_rad/2.0), 4.0)) * (del_angle * to_rad) / norm;
         if(tmp > uni){
             cm_angle = angle;
             break;
@@ -160,7 +180,7 @@ double generate_cm_angle_list(string datafile)
   double ang, dif_cs, tmp=0.0;
   for(int i=0; i<num; i++){
     fdata >> ang >> dif_cs;
-    tmp += dif_cs;
+    tmp += dif_cs * sin(ang * to_rad);
     cs[0][i] = ang;
     cs[1][i] = tmp;
   }
@@ -175,6 +195,5 @@ double generate_cm_angle_list(string datafile)
       break;
     }
   }
-
   return cm_ang;
 }

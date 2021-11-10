@@ -13,8 +13,14 @@
 
 using namespace std;
 
+
 int main( int argc, char **argv )
 {
+    //setup the command line argument
+    int mode = initial_com_line(argc, argv);
+    cout << endl;
+
+
     //prepare datafile
     string datafile_cs("../database/cross_section/cs_6he_d_Ecm10MeV.txt");
     cout << "...reading " << datafile_cs << endl;
@@ -57,6 +63,9 @@ int main( int argc, char **argv )
     tree->Branch("part2_strip_x", &part2_strip_x, "part2_strip_x/I");
     tree->Branch("part2_strip_y", &part2_strip_y, "part2_strip_y/I");
 
+    TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
+    TH1F *h_all_ang = new TH1F( "h_all_ang", "", 100, 0., 180.0 );
+    TH1F *h_det_ang = new TH1F( "h_det_ang", "", 100, 0., 180.0 );
 
 
     //generate beam
@@ -66,20 +75,15 @@ int main( int argc, char **argv )
     beam_test->print_cond();
 
 
-    //Put the initial particle information into the particle[]
-    //the particle after reaction is particle1[] and particle2[]
-    
-    //particle[0]: particle type >6he <3H
-    //particle[1]: particle energy
-    //particle[2]: location_x (cm)
-    //particle[3]: location_y
-    //particle[4]: location_z
-    double particle[5], particle1[7], particle2[7];
-    TH1F *h_strip = new TH1F( "h_strip", "", 100, 0., 50.0 );
 
 
-    cout << "simulartion start ... " << endl;
+    cout << "simulation start ... " << endl;
     int count = 0;
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    int count4 = 0;
+    int count10 = 0;
     for(int loop=0; loop<beam_test->get_ini_num(); loop++){
         ini_particle = -9999;
         ini_x=-9999.0, ini_y=-9999.0, ini_z=-9999.0, ini_energy=-9999.0;
@@ -90,12 +94,21 @@ int main( int argc, char **argv )
         part1_strip_x=-9999, part1_strip_y=-9999, part2_strip_x=-9999, part2_strip_y=-9999;
 
 
-       // if((loop+1)%10==0){
-       //     cout << "\r" << "proceeding... " << 100.0 * (double)(loop+1)/(double)beam_test->get_ini_num() << " %" << string(20, ' ');
-       // }
         if( (loop+1) % (int)(beam_test->get_ini_num()/100.0) == 0){
             cout << loop+1 << " / " << beam_test->get_ini_num() << endl;
         }
+
+        //Put the initial particle information into the particle[]
+        //the particle after the reaction is particle1[] and particle2[]
+
+        //particle[0]: particle type (1:main beam, -1:sub beam)
+        //particle[1]: particle energy (MeV/u)
+        //particle[2]: location_x (cm)
+        //particle[3]: location_y
+        //particle[4]: location_z
+        double particle[5] = {};
+        double particle1[7] = {};
+        double particle2[7] = {};
 
         beam_test->generate_beam(particle);
         if(particle[0] > 0.0){ ini_particle = 0;}
@@ -105,7 +118,10 @@ int main( int argc, char **argv )
         ini_y = particle[3];
         ini_z = particle[4];
 
-        int reaction_flag = beam_test->judge_interact(particle, datafile_cs);
+
+        int reaction_flag;
+        if(mode == 1){ reaction_flag = beam_test->judge_interact(particle, datafile_cs); }
+        else{ reaction_flag = beam_test->judge_interact_ignore(particle, datafile_cs); }
         flag_reac = reaction_flag;
         //flag_reac=0 : no reaction
         //flag_reac=1 : elastic main beam + main target
@@ -113,10 +129,13 @@ int main( int argc, char **argv )
         //flag_reac=3 : elastic sub beam + main target
         //flag_reac=4 : elastic sub beam + sub target
         //flag_reac=10 : inelastic scattering (reaction of interest)
-        if(reaction_flag == 0){
-            //tree->Fill();
-            continue;
-        }
+        if(reaction_flag == 0){ continue; }
+
+        if(reaction_flag == 1){ count1 += 1; }
+        else if(reaction_flag == 2){ count2 += 1; }
+        else if(reaction_flag == 3){ count3 += 1; }
+        else if(reaction_flag == 4){ count4 += 1; }
+        else if(reaction_flag == 10){ count10 += 1; }
         
         beam_test->reation_loc_target(particle);
 
@@ -126,12 +145,13 @@ int main( int argc, char **argv )
         scat_z = particle[4];
 
         cm_ang = beam_test->scatter(reaction_flag, particle, particle1, particle2, datafile_cs);
+        part1_energy = particle1[1];
+        part2_energy = particle2[1];
         part1_theta = particle1[5];
         part1_phi = particle1[6];
         part2_theta = particle2[5];
         part2_phi = particle2[6];
-        part1_energy = particle1[1];
-        part2_energy = particle2[1];
+        h_all_ang->Fill(cm_ang);
 
         int flag1 = beam_test->leave_target(particle1);
         if(flag1 == 1){
@@ -161,21 +181,32 @@ int main( int argc, char **argv )
 
         if(part1_det_energy > 0 || part2_det_energy > 0){
           tree->Fill();
+          h_det_ang->Fill(cm_ang);
           count += 1;
         }
     }
     cout << endl;
-    cout << "Number of hits : " << count << " / " << beam_test->get_ini_num() << endl;
+    cout << "occured reaction" << endl;
+    cout << "reaction 1  : " << count1 << endl;
+    cout << "reaction 2  : " << count2 << endl;
+    cout << "reaction 3  : " << count3 << endl;
+    cout << "reaction 4  : " << count4 << endl;
+    cout << "reaction 10 : " << count10 << endl;
+    cout << "TOTAL       : " << count1 + count2 + count3 + count4 + count10 << endl;
+    cout << endl;
+    cout << "Number of detector hits : " << count << " / " << beam_test->get_ini_num() << endl;
 
     TString ofn = "../simulation.root";
     TFile *fout = new TFile(ofn, "recreate");
     tree->Write();
     h_strip->Write();
+    h_all_ang->Write();
+    h_det_ang->Write();
     fout->Close();
 
     cout << endl;
     cout << endl;
-    cout << "<Created> ./simulation.root" << endl;
+    cout << "<CREATED> ./simulation.root" << endl;
     cout << "...simulation completed!" << endl;
     return 0;
 }

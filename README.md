@@ -73,7 +73,30 @@ if you have some error, please check that the directory is **./build** when the 
 After that, **./simulation.root** is created, so you can use it to analyse.
 
 ## Root file
-preparering...
+### branches
+* ini_particle : beam type (1:main beam, -1:sub beam)
+* ini_x : x position of initial particle
+* ini_y : y ...
+* ini_z : z ...
+* ini_energy : initial energy (MeV/u)
+* flag_reac : 1,2,3,4:elastic scattering, 10, main reaction
+* scat_x : x position of scattering
+* scat_y : y ...
+* scat_z : z ...
+* scat_energy : the energy of the incident beam at the time the reaction occurs (MeV/u)
+* cm_ang : scattering angle (CM system)
+* part1_theta : theta of the outgoing particle1
+* part1_phi : phi of the outgoing particle1
+* part2_theta : theta of the outgoing particle2
+* part2_phi : phi of the outgoing particle2
+* part1_energy : energy of the particle1
+* part1_det_energy : detected energy of the particle1
+* part1_strip_x : x strip number of the particle1
+* part1_strip_y : y ...
+* part2_energy : energy of the particle2
+* part2_det_energy : ...
+* part2_strip_x : ...
+* part2_strip_y : ...
 
 
 ## Reference
